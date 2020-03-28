@@ -79,13 +79,15 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="https://gnwing.github.io/categories/index.html">
+<meta name="description" content="DIRB使用指南1、普通爆破1dirb http:&#x2F;&#x2F;victim.com&#x2F; .&#x2F;ASP.txt   http:&#x2F;&#x2F;victim.com 为爆破的网址 ASP.txt 为爆破用的字典  2、多字典挂载1dirb http:&#x2F;&#x2F;victim.com&#x2F; .&#x2F;ASP.txt,.&#x2F;DIR.txt    3、自定义UA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DIRB使用指南">
+<meta property="og:url" content="https://gnwing.github.io/2020/03/28/DIRB%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/index.html">
 <meta property="og:site_name" content="GNWING&#39;s BLOG">
+<meta property="og:description" content="DIRB使用指南1、普通爆破1dirb http:&#x2F;&#x2F;victim.com&#x2F; .&#x2F;ASP.txt   http:&#x2F;&#x2F;victim.com 为爆破的网址 ASP.txt 为爆破用的字典  2、多字典挂载1dirb http:&#x2F;&#x2F;victim.com&#x2F; .&#x2F;ASP.txt,.&#x2F;DIR.txt    3、自定义UA">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-03-28T06:19:06.000Z">
-<meta property="article:modified_time" content="2020-03-28T06:22:30.955Z">
+<meta property="article:published_time" content="2020-03-28T06:51:11.872Z">
+<meta property="article:modified_time" content="2020-01-31T08:00:05.298Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -117,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="https://gnwing.github.io/categories/"/>
+  <link rel="canonical" href="https://gnwing.github.io/2020/03/28/DIRB使用指南/"/>
 
 
 
 
 
-  <title>categories | GNWING's BLOG</title>
+  <title>DIRB使用指南 | GNWING's BLOG</title>
   
 
 
@@ -238,40 +240,157 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://gnwing.github.io/2020/03/28/DIRB%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GNWING's BLOG">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">categories</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                1 category in total
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/gnwing/">gnwing</a><span class="category-list-count">1</span></li></ul>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">DIRB使用指南</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-28T14:51:11+08:00">
+                2020-03-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="DIRB使用指南"><a href="#DIRB使用指南" class="headerlink" title="DIRB使用指南"></a>DIRB使用指南</h2><h5 id="1、普通爆破"><a href="#1、普通爆破" class="headerlink" title="1、普通爆破"></a>1、普通爆破</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirb http:&#x2F;&#x2F;victim.com&#x2F; .&#x2F;ASP.txt</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a href="http://victim.com" target="_blank" rel="noopener">http://victim.com</a> 为爆破的网址</li>
+<li>ASP.txt 为爆破用的字典</li>
+</ul>
+<h5 id="2、多字典挂载"><a href="#2、多字典挂载" class="headerlink" title="2、多字典挂载"></a>2、多字典挂载</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirb http:&#x2F;&#x2F;victim.com&#x2F; .&#x2F;ASP.txt,.&#x2F;DIR.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="3、自定义UA"><a href="#3、自定义UA" class="headerlink" title="3、自定义UA"></a>3、自定义UA</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirb http:&#x2F;&#x2F;victim.com&#x2F; .&#x2F;ASP.txt -a &quot;Mozilla&#x2F;5.0 (compatible; Googlebot&#x2F;2.1; +http:&#x2F;&#x2F;www.google.com&#x2F;bot.html)&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="4、自定义cookie"><a href="#4、自定义cookie" class="headerlink" title="4、自定义cookie"></a>4、自定义cookie</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirb http:&#x2F;&#x2F;victim.com&#x2F; .&#x2F;DIR.txt -a &quot;Mozilla&#x2F;5.0 (compatible; Googlebot&#x2F;2.1; +http:&#x2F;&#x2F;www.google.com&#x2F;bot.html)&quot; -c &quot;ASP.NET_SessionId&#x3D;jennqviqmc2vws55o4ggwu45&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="5、自定义毫秒延迟"><a href="#5、自定义毫秒延迟" class="headerlink" title="5、自定义毫秒延迟"></a>5、自定义毫秒延迟</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirb http:&#x2F;&#x2F;victim.com&#x2F; .&#x2F;DIR.txt -a &quot;Mozilla&#x2F;5.0 (compatible; Googlebot&#x2F;2.1; +http:&#x2F;&#x2F;www.google.com&#x2F;bot.html)&quot; -c &quot;ASP.NET_SessionId&#x3D;jennqviqmc2vws55o4ggwu45&quot; -z 100</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/12/test/" rel="next" title="test">
+                <i class="fa fa-chevron-left"></i> test
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -280,6 +399,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -300,8 +423,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -361,6 +493,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#DIRB使用指南"><span class="nav-number">1.</span> <span class="nav-text">DIRB使用指南</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、普通爆破"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1、普通爆破</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、多字典挂载"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">2、多字典挂载</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、自定义UA"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">3、自定义UA</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、自定义cookie"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">4、自定义cookie</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5、自定义毫秒延迟"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">5、自定义毫秒延迟</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

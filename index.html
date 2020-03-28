@@ -249,6 +249,145 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://gnwing.github.io/2020/03/28/DIRB%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GNWING's BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/28/DIRB%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" itemprop="url">DIRB使用指南</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-28T14:51:11+08:00">
+                2020-03-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="DIRB使用指南"><a href="#DIRB使用指南" class="headerlink" title="DIRB使用指南"></a>DIRB使用指南</h2><h5 id="1、普通爆破"><a href="#1、普通爆破" class="headerlink" title="1、普通爆破"></a>1、普通爆破</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirb http:&#x2F;&#x2F;victim.com&#x2F; .&#x2F;ASP.txt</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a href="http://victim.com" target="_blank" rel="noopener">http://victim.com</a> 为爆破的网址</li>
+<li>ASP.txt 为爆破用的字典</li>
+</ul>
+<h5 id="2、多字典挂载"><a href="#2、多字典挂载" class="headerlink" title="2、多字典挂载"></a>2、多字典挂载</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirb http:&#x2F;&#x2F;victim.com&#x2F; .&#x2F;ASP.txt,.&#x2F;DIR.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="3、自定义UA"><a href="#3、自定义UA" class="headerlink" title="3、自定义UA"></a>3、自定义UA</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirb http:&#x2F;&#x2F;victim.com&#x2F; .&#x2F;ASP.txt -a &quot;Mozilla&#x2F;5.0 (compatible; Googlebot&#x2F;2.1; +http:&#x2F;&#x2F;www.google.com&#x2F;bot.html)&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="4、自定义cookie"><a href="#4、自定义cookie" class="headerlink" title="4、自定义cookie"></a>4、自定义cookie</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirb http:&#x2F;&#x2F;victim.com&#x2F; .&#x2F;DIR.txt -a &quot;Mozilla&#x2F;5.0 (compatible; Googlebot&#x2F;2.1; +http:&#x2F;&#x2F;www.google.com&#x2F;bot.html)&quot; -c &quot;ASP.NET_SessionId&#x3D;jennqviqmc2vws55o4ggwu45&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="5、自定义毫秒延迟"><a href="#5、自定义毫秒延迟" class="headerlink" title="5、自定义毫秒延迟"></a>5、自定义毫秒延迟</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirb http:&#x2F;&#x2F;victim.com&#x2F; .&#x2F;DIR.txt -a &quot;Mozilla&#x2F;5.0 (compatible; Googlebot&#x2F;2.1; +http:&#x2F;&#x2F;www.google.com&#x2F;bot.html)&quot; -c &quot;ASP.NET_SessionId&#x3D;jennqviqmc2vws55o4ggwu45&quot; -z 100</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://gnwing.github.io/2020/01/12/test/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -548,7 +687,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
