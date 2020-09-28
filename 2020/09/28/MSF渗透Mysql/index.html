@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="gnwing," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,17 +79,16 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="description" content="MSF渗透Mysql 常用攻击模块  1、auxiliary&#x2F;scanner&#x2F;mysql&#x2F;mysql_login  常用于内网中的批量以及单主机的登录测试  2、auxiliary&#x2F;scanner&#x2F;mysql&#x2F;mysql_hashdump  mysql 的mysql.user 表的hash 对应的sql语句：SELECT HOST,USER,PASSWORD FROM mysql.user  3、">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://gnwing.github.io/2014/12/22/hello-world/index.html">
+<meta property="og:title" content="MSF渗透Mysql">
+<meta property="og:url" content="https://gnwing.github.io/2020/09/28/MSF%E6%B8%97%E9%80%8FMysql/index.html">
 <meta property="og:site_name" content="GNWING&#39;s BLOG">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="MSF渗透Mysql 常用攻击模块  1、auxiliary&#x2F;scanner&#x2F;mysql&#x2F;mysql_login  常用于内网中的批量以及单主机的登录测试  2、auxiliary&#x2F;scanner&#x2F;mysql&#x2F;mysql_hashdump  mysql 的mysql.user 表的hash 对应的sql语句：SELECT HOST,USER,PASSWORD FROM mysql.user  3、">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2014-12-22T04:39:04.000Z">
-<meta property="article:modified_time" content="2020-03-28T06:25:54.564Z">
+<meta property="article:published_time" content="2020-09-28T13:22:26.127Z">
+<meta property="article:modified_time" content="2020-01-31T11:57:20.920Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="gnwing">
 <meta name="twitter:card" content="summary">
 
 
@@ -120,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="https://gnwing.github.io/2014/12/22/hello-world/"/>
+  <link rel="canonical" href="https://gnwing.github.io/2020/09/28/MSF渗透Mysql/"/>
 
 
 
 
 
-  <title>Hello World | GNWING's BLOG</title>
+  <title>MSF渗透Mysql | GNWING's BLOG</title>
   
 
 
@@ -253,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://gnwing.github.io/2014/12/22/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://gnwing.github.io/2020/09/28/MSF%E6%B8%97%E9%80%8FMysql/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -270,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">MSF渗透Mysql</h1>
         
 
         <div class="post-meta">
@@ -282,8 +281,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-12-22T12:39:04+08:00">
-                2014-12-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-28T21:22:26+08:00">
+                2020-09-28
               </time>
             
 
@@ -293,29 +292,9 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/gnwing/" itemprop="url" rel="index">
-                    <span itemprop="name">gnwing</span>
-                  </a>
-                </span>
 
-                
-                
-              
-            </span>
           
-
+            
           
 
           
@@ -340,21 +319,38 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<a id="more"></a>
-
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h2 id="MSF渗透Mysql"><a href="#MSF渗透Mysql" class="headerlink" title="MSF渗透Mysql"></a>MSF渗透Mysql</h2><blockquote>
+<p>常用攻击模块</p>
+</blockquote>
+<p>1、auxiliary/scanner/mysql/mysql_login</p>
+<ul>
+<li>常用于内网中的批量以及单主机的登录测试</li>
+</ul>
+<p>2、auxiliary/scanner/mysql/mysql_hashdump</p>
+<ul>
+<li>mysql 的mysql.user 表的hash</li>
+<li>对应的sql语句：SELECT HOST,USER,PASSWORD FROM mysql.user</li>
+</ul>
+<p>3、auxiliary/scanner/mysql/mysql_version</p>
+<ul>
+<li>常用于内网中的批量mysql主机发现</li>
+</ul>
+<p>4、auxiliary/admin/mysql/mysql_sql</p>
+<ul>
+<li>执行sql语句，在目标机没有web界面等无法用脚本执行的环境</li>
+</ul>
+<p>5、exploit/multi/mysql/mysql_udf_payload</p>
+<ul>
+<li>常用于root启动的MySQL 并 root 的udf提权</li>
+</ul>
+<p>6、exploit/windows/mysql/mysql_mof</p>
+<ul>
+<li>mysql mof提权</li>
+</ul>
+<p>7、exploit/windows/mysql/scrutinizer_upload_exec</p>
+<ul>
+<li>上传文件执行</li>
+</ul>
 
       
     </div>
@@ -370,12 +366,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/gnwing/" rel="tag"># gnwing</a>
-          
-        </div>
-      
 
       
       
@@ -385,14 +375,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2020/09/28/msfvenom%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="next" title="msfvenom常用命令">
+                <i class="fa fa-chevron-left"></i> msfvenom常用命令
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/01/12/test/" rel="prev" title="test">
-                test <i class="fa fa-chevron-right"></i>
+              <a href="/2020/09/28/MSF%E6%B8%97%E9%80%8FSQL%20SERVER/" rel="prev" title="MSF渗透SQL SERVER">
+                MSF渗透SQL SERVER <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -421,6 +415,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -521,7 +519,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MSF渗透Mysql"><span class="nav-number">1.</span> <span class="nav-text">MSF渗透Mysql</span></a></li></ol></div>
             
 
           </div>
