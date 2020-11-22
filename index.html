@@ -329,7 +329,7 @@ Knowing the password is cool, but there are other approaches that might be easie
 Just because request fails with one method doesn&apos;t mean it will fail with a different method
 Different requests often have different required authorization</code></pre><p>Flag2 – Found</p>
 <pre><code>Credentials are secret, flags are secret. Coincidence?</code></pre></blockquote>
-<h4 id="0x001"><a href="#0x001" class="headerlink" title="#0x001"></a>#0x001</h4><p>打开页面如下所示：<br><img src="./index.png" alt="img"></p>
+<h4 id="0x001"><a href="#0x001" class="headerlink" title="#0x001"></a>#0x001</h4><p>打开页面如下所示：<br><img src="../../public/images/index.png" alt="img"></p>
 <p>当尝试编辑页面以及新建页面的时候，需要登陆：<br><img src="./login.png" alt="img"></p>
 <p>尝试输入 username=单引号，以及password=单引号，username为单引号报错，password为单引号时提示“Unknown user”。<br><img src="./single_quote_error.png" alt="img"><br>根据报错信息，可知该SQL语句为：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">password</span> <span class="keyword">FROM</span> admins <span class="keyword">WHERE</span> username=\<span class="string">'%s\'</span> % request.form[<span class="string">'username'</span>].replace(<span class="string">'%'</span>, <span class="string">'%%'</span>)) == <span class="number">0</span></span><br></pre></td></tr></table></figure>
