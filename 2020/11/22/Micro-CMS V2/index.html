@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="GNWING&#39;s BLOG">
 <meta property="og:description" content="hacker101 CTF – Micro-CMS V2 Hints for “Micro-CMS v2”Flag0 – Found Regular users can only see public pages Getting admin access might require a more perfect union Knowing the password is cool, but the">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://gnwing.github.io/2020/11/public/images/index.png">
+<meta property="og:image" content="https://gnwing.github.io/2020/11/22/Micro-CMS%20V2/index.png">
 <meta property="og:image" content="https://gnwing.github.io/2020/11/22/Micro-CMS%20V2/login.png">
 <meta property="og:image" content="https://gnwing.github.io/2020/11/22/Micro-CMS%20V2/single_quote_error.png">
 <meta property="og:image" content="https://gnwing.github.io/2020/11/22/Micro-CMS%20V2/logined.png">
@@ -96,10 +96,10 @@
 <meta property="og:image" content="https://gnwing.github.io/2020/11/22/Micro-CMS%20V2/burp_password_length.png">
 <meta property="og:image" content="https://gnwing.github.io/2020/11/22/Micro-CMS%20V2/FLAG3.png">
 <meta property="article:published_time" content="2020-11-22T15:30:30.921Z">
-<meta property="article:modified_time" content="2020-11-22T15:37:52.239Z">
+<meta property="article:modified_time" content="2020-11-22T16:07:18.259Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gnwing.github.io/2020/11/public/images/index.png">
+<meta name="twitter:image" content="https://gnwing.github.io/2020/11/22/Micro-CMS%20V2/index.png">
 
 
 
@@ -338,7 +338,7 @@ Knowing the password is cool, but there are other approaches that might be easie
 Just because request fails with one method doesn&apos;t mean it will fail with a different method
 Different requests often have different required authorization</code></pre><p>Flag2 – Found</p>
 <pre><code>Credentials are secret, flags are secret. Coincidence?</code></pre></blockquote>
-<h4 id="0x001"><a href="#0x001" class="headerlink" title="#0x001"></a>#0x001</h4><p>打开页面如下所示：<br><img src="../../public/images/index.png" alt="img"></p>
+<h4 id="0x001"><a href="#0x001" class="headerlink" title="#0x001"></a>#0x001</h4><p>打开页面如下所示：<br><img src="./index.png" alt="img"></p>
 <p>当尝试编辑页面以及新建页面的时候，需要登陆：<br><img src="./login.png" alt="img"></p>
 <p>尝试输入 username=单引号，以及password=单引号，username为单引号报错，password为单引号时提示“Unknown user”。<br><img src="./single_quote_error.png" alt="img"><br>根据报错信息，可知该SQL语句为：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">password</span> <span class="keyword">FROM</span> admins <span class="keyword">WHERE</span> username=\<span class="string">'%s\'</span> % request.form[<span class="string">'username'</span>].replace(<span class="string">'%'</span>, <span class="string">'%%'</span>)) == <span class="number">0</span></span><br></pre></td></tr></table></figure>
