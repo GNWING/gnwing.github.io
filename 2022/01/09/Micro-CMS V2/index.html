@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="hacker101 CTF – Micro-CMS V2 Hints for “Micro-CMS v2”Flag0 – Found Regular users can only see public pages Getting admin access might require a more perfect union Knowing the password is cool, but the">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Micro-CMS V2">
+<meta property="og:url" content="https://gnwing.github.io/2022/01/09/Micro-CMS%20V2/index.html">
+<meta property="og:site_name" content="GNWING&#39;s BLOG">
+<meta property="og:description" content="hacker101 CTF – Micro-CMS V2 Hints for “Micro-CMS v2”Flag0 – Found Regular users can only see public pages Getting admin access might require a more perfect union Knowing the password is cool, but the">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gnwing.github.io/2022/01/09/Micro-CMS%20V2/index.png">
+<meta property="og:image" content="https://gnwing.github.io/2022/01/09/Micro-CMS%20V2/login.png">
+<meta property="og:image" content="https://gnwing.github.io/2022/01/09/Micro-CMS%20V2/single_quote_error.png">
+<meta property="og:image" content="https://gnwing.github.io/2022/01/09/Micro-CMS%20V2/logined.png">
+<meta property="og:image" content="https://gnwing.github.io/2022/01/09/Micro-CMS%20V2/FLAG1.png">
+<meta property="og:image" content="https://gnwing.github.io/2022/01/09/Micro-CMS%20V2/login_data.png">
+<meta property="og:image" content="https://gnwing.github.io/2022/01/09/Micro-CMS%20V2/sqlmap_injection_success.png">
+<meta property="og:image" content="https://gnwing.github.io/2022/01/09/Micro-CMS%20V2/burp_password_length.png">
+<meta property="og:image" content="https://gnwing.github.io/2022/01/09/Micro-CMS%20V2/FLAG3.png">
+<meta property="article:published_time" content="2022-01-09T13:57:13.919Z">
+<meta property="article:modified_time" content="2022-01-09T13:57:13.919Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gnwing.github.io/2022/01/09/Micro-CMS%20V2/index.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://gnwing.github.io/2022/01/09/Micro-CMS V2/"/>
+
+
+
+
+
+  <title>Micro-CMS V2 | GNWING's BLOG</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GNWING's BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://gnwing.github.io/2022/01/09/Micro-CMS%20V2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GNWING's BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Micro-CMS V2</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-01-09T13:57:13+00:00">
+                2022-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="hacker101-CTF-–-Micro-CMS-V2"><a href="#hacker101-CTF-–-Micro-CMS-V2" class="headerlink" title="hacker101 CTF – Micro-CMS V2"></a>hacker101 CTF – Micro-CMS V2</h3><blockquote>
+<p>Hints for “Micro-CMS v2”<br>Flag0 – Found</p>
+<pre><code>Regular users can only see public pages
+Getting admin access might require a more perfect union
+Knowing the password is cool, but there are other approaches that might be easier</code></pre><p>Flag1 – Found</p>
+<pre><code>What actions could you perform as a regular user on the last level, which you can&apos;t now?
+Just because request fails with one method doesn&apos;t mean it will fail with a different method
+Different requests often have different required authorization</code></pre><p>Flag2 – Found</p>
+<pre><code>Credentials are secret, flags are secret. Coincidence?</code></pre></blockquote>
+<h4 id="0x001"><a href="#0x001" class="headerlink" title="#0x001"></a>#0x001</h4><p>打开页面如下所示：<br><img src="./index.png" alt="img"></p>
+<p>当尝试编辑页面以及新建页面的时候，需要登陆：<br><img src="./login.png" alt="img"></p>
+<p>尝试输入 username=单引号，以及password=单引号，username为单引号报错，password为单引号时提示“Unknown user”。<br><img src="./single_quote_error.png" alt="img"><br>根据报错信息，可知该SQL语句为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">password</span> <span class="keyword">FROM</span> admins <span class="keyword">WHERE</span> username=\<span class="string">'%s\'</span> % request.form[<span class="string">'username'</span>].replace(<span class="string">'%'</span>, <span class="string">'%%'</span>)) == <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>由此推断该登录程序是通过 username select 出来后在比对密码（也可以由Unknow user 和 Invalid password两个不同提示判断SQL 中两个参数是分开的），逻辑如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$result = $db-&gt;query(select password from users where username='$username');</span><br><span class="line">if ($result['password'] == $password)</span><br><span class="line">	login_success();</span><br></pre></td></tr></table></figure>
+
+<p>根据报错的SQL查询语句，通过 union select注入，<br><span style="color:red"><strong>username: ‘ union all select 123#</strong></span><br><span style="color:red"><strong>password: 123</strong></span></p>
+<p>或者</p>
+<p><span style="color:red"><strong>username: ‘ union select ‘123’ as password – **</span><br><span style="color:red"></strong>password: 123**</span></p>
+<p>返回主页，可以发现多了一个 “Private Page” 链接，点击跳转可获得第一个FLAG<br><img src="./logined.png" alt="img"><br><img src="./FLAG1.png" alt="img"></p>
+<h4 id="0x002"><a href="#0x002" class="headerlink" title="#0x002"></a>#0x002</h4><p>因为登录页面存在SQL注入，因此尝试找出数据库存在的用户和信息。</p>
+<ul>
+<li><p>Sqlmap<br>将登录请求保存下来，用Sqlmap自动注入<br><img src="./login_data.png" alt="img"><br><img src="./sqlmap_injection_success.png" alt="img"></p>
+</li>
+<li><p>Burp 手工注入<br>尝试判断password长度：<span style='color:red'><strong>username= ‘ or length(password)=1 – **</span>，用Burp爆破，可知password长度为6：<br><img src="./burp_password_length.png" alt="img"><br>再判断password 的每个字符：<span style="color:red"></strong>username= ‘ or password like ‘a%’ – **</span>，第一个字符为h，最终得到：hellen。<br>同理，username为：joseph</p>
+<p>#<strong>其他payload：</strong></p>
+<p>利用 mysql _ 的匹配符号，下划线会做比对，假设username=abcde，username like ‘a____’ 就会匹配成功，返回true。</p>
+<p>判断长度：<strong>username=’ or length(password) like ‘-—-&#39;</strong>，用下划线做匹配<br>判断字符：<strong>username=’ or password like ‘a____&#39;</strong>，匹配第一个字符。</p>
+</li>
+</ul>
+<p>获得用户名和密码后登录，获得第二个Flag。</p>
+<h4 id="0x03"><a href="#0x03" class="headerlink" title="0x03"></a><strong>0x03</strong></h4><p>在使用第一种方法登录进去后，尝试测试其他功能点，尝试在编辑中插入XSS，XSS可执行，但无Flag。将编辑页面的save 请求重放，修改请求方式以及Cookie等，发现删除Cookie可获得第三个Flag：<br><img src="./FLAG3.png" alt="img"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/01/09/Payload%E5%88%86%E7%A6%BB%E5%85%8D%E6%9D%80%E6%80%9D%E8%B7%AF/" rel="next" title="Payload分离免杀思路">
+                <i class="fa fa-chevron-left"></i> Payload分离免杀思路
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/01/09/MSF%E6%B8%97%E9%80%8FSQL%20SERVER/" rel="prev" title="MSF渗透SQL SERVER">
+                MSF渗透SQL SERVER <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#hacker101-CTF-–-Micro-CMS-V2"><span class="nav-number">1.</span> <span class="nav-text">hacker101 CTF – Micro-CMS V2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#0x001"><span class="nav-number">1.1.</span> <span class="nav-text">#0x001</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#0x002"><span class="nav-number">1.2.</span> <span class="nav-text">#0x002</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#0x03"><span class="nav-number">1.3.</span> <span class="nav-text">0x03</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
