@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="DIRB使用指南">
+<meta name="description" content="攻击FTP服务msf模块  auxiliary&#x2F;scanner&#x2F;ftp&#x2F;ftp_version auxiliary&#x2F;scanner&#x2F;ftp&#x2F;ftp_login auxiliary&#x2F;scanner&#x2F;ftp&#x2F;anonymous db_nmap -sS -T4 -p21 192.168.1.115  ftp本地模糊测试辅助模块：  auxiliary&#x2F;fuzzers&#x2F;ftp&#x2F;ftp_pre_post">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DIRB使用指南">
-<meta property="og:url" content="https://gnwing.github.io/2022/01/09/DIRB%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:title" content="攻击FTP服务">
+<meta property="og:url" content="https://gnwing.github.io/2022/01/10/%E6%94%BB%E5%87%BBFTP%E6%9C%8D%E5%8A%A1/index.html">
 <meta property="og:site_name" content="GNWING&#39;s BLOG">
-<meta property="og:description" content="DIRB使用指南">
+<meta property="og:description" content="攻击FTP服务msf模块  auxiliary&#x2F;scanner&#x2F;ftp&#x2F;ftp_version auxiliary&#x2F;scanner&#x2F;ftp&#x2F;ftp_login auxiliary&#x2F;scanner&#x2F;ftp&#x2F;anonymous db_nmap -sS -T4 -p21 192.168.1.115  ftp本地模糊测试辅助模块：  auxiliary&#x2F;fuzzers&#x2F;ftp&#x2F;ftp_pre_post">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-01-09T15:31:59.037Z">
-<meta property="article:modified_time" content="2022-01-09T15:31:59.037Z">
+<meta property="article:published_time" content="2022-01-10T03:23:26.756Z">
+<meta property="article:modified_time" content="2022-01-10T03:23:26.756Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="https://gnwing.github.io/2022/01/09/DIRB使用指南/"/>
+  <link rel="canonical" href="https://gnwing.github.io/2022/01/10/攻击FTP服务/"/>
 
 
 
 
 
-  <title>DIRB使用指南 | GNWING's BLOG</title>
+  <title>攻击FTP服务 | GNWING's BLOG</title>
   
 
 
@@ -252,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://gnwing.github.io/2022/01/09/DIRB%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
+    <link itemprop="mainEntityOfPage" href="https://gnwing.github.io/2022/01/10/%E6%94%BB%E5%87%BBFTP%E6%9C%8D%E5%8A%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -269,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">DIRB使用指南</h1>
+          <h1 class="post-title" itemprop="name headline">攻击FTP服务</h1>
         
 
         <div class="post-meta">
@@ -281,8 +281,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-01-09T15:31:59+00:00">
-                2022-01-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-01-10T11:23:26+08:00">
+                2022-01-10
               </time>
             
 
@@ -319,28 +319,17 @@
       
 
       
-        <h2 id="DIRB使用指南"><a href="#DIRB使用指南" class="headerlink" title="DIRB使用指南"></a>DIRB使用指南</h2><a id="more"></a>
-
-<h5 id="1、普通爆破"><a href="#1、普通爆破" class="headerlink" title="1、普通爆破"></a>1、普通爆破</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirb http:&#x2F;&#x2F;victim.com&#x2F; .&#x2F;ASP.txt</span><br></pre></td></tr></table></figure>
-
+        <h2 id="攻击FTP服务"><a href="#攻击FTP服务" class="headerlink" title="攻击FTP服务"></a>攻击FTP服务</h2><p>msf模块</p>
 <ul>
-<li><a href="http://victim.com" target="_blank" rel="noopener">http://victim.com</a> 为爆破的网址</li>
-<li>ASP.txt 为爆破用的字典</li>
+<li>auxiliary/scanner/ftp/ftp_version</li>
+<li>auxiliary/scanner/ftp/ftp_login</li>
+<li>auxiliary/scanner/ftp/anonymous</li>
+<li>db_nmap -sS -T4 -p21 192.168.1.115</li>
 </ul>
-<h5 id="2、多字典挂载"><a href="#2、多字典挂载" class="headerlink" title="2、多字典挂载"></a>2、多字典挂载</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirb http:&#x2F;&#x2F;victim.com&#x2F; .&#x2F;ASP.txt,.&#x2F;DIR.txt</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="3、自定义UA"><a href="#3、自定义UA" class="headerlink" title="3、自定义UA"></a>3、自定义UA</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirb http:&#x2F;&#x2F;victim.com&#x2F; .&#x2F;ASP.txt -a &quot;Mozilla&#x2F;5.0 (compatible; Googlebot&#x2F;2.1; +http:&#x2F;&#x2F;www.google.com&#x2F;bot.html)&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="4、自定义cookie"><a href="#4、自定义cookie" class="headerlink" title="4、自定义cookie"></a>4、自定义cookie</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirb http:&#x2F;&#x2F;victim.com&#x2F; .&#x2F;DIR.txt -a &quot;Mozilla&#x2F;5.0 (compatible; Googlebot&#x2F;2.1; +http:&#x2F;&#x2F;www.google.com&#x2F;bot.html)&quot; -c &quot;ASP.NET_SessionId&#x3D;jennqviqmc2vws55o4ggwu45&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="5、自定义毫秒延迟"><a href="#5、自定义毫秒延迟" class="headerlink" title="5、自定义毫秒延迟"></a>5、自定义毫秒延迟</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirb http:&#x2F;&#x2F;victim.com&#x2F; .&#x2F;DIR.txt -a &quot;Mozilla&#x2F;5.0 (compatible; Googlebot&#x2F;2.1; +http:&#x2F;&#x2F;www.google.com&#x2F;bot.html)&quot; -c &quot;ASP.NET_SessionId&#x3D;jennqviqmc2vws55o4ggwu45&quot; -z 100</span><br></pre></td></tr></table></figure>
-
+<p>ftp本地模糊测试辅助模块：</p>
+<ul>
+<li>auxiliary/fuzzers/ftp/ftp_pre_post</li>
+</ul>
 
       
     </div>
@@ -365,8 +354,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2022/01/09/MSF%E4%B8%BB%E6%9C%BA%E5%8F%91%E7%8E%B0/" rel="next" title="MSF主机发现">
-                <i class="fa fa-chevron-left"></i> MSF主机发现
+              <a href="/2022/01/09/test20220109/" rel="next" title="test20220109">
+                <i class="fa fa-chevron-left"></i> test20220109
               </a>
             
           </div>
@@ -375,8 +364,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2022/01/09/%E6%94%BB%E5%87%BBFTP%E6%9C%8D%E5%8A%A1/" rel="prev" title="攻击FTP服务">
-                攻击FTP服务 <i class="fa fa-chevron-right"></i>
+              <a href="/2022/01/10/windows%E5%B9%B3%E5%8F%B0paylaod%E4%B8%8B%E8%BD%BD/" rel="prev" title="windows平台paylaod下载">
+                windows平台paylaod下载 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -454,7 +443,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -509,7 +498,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#DIRB使用指南"><span class="nav-number">1.</span> <span class="nav-text">DIRB使用指南</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、普通爆破"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1、普通爆破</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、多字典挂载"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">2、多字典挂载</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、自定义UA"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">3、自定义UA</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、自定义cookie"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">4、自定义cookie</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5、自定义毫秒延迟"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">5、自定义毫秒延迟</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#攻击FTP服务"><span class="nav-number">1.</span> <span class="nav-text">攻击FTP服务</span></a></li></ol></div>
             
 
           </div>

@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="MSF渗透Mysql 常用攻击模块  1、auxiliary&#x2F;scanner&#x2F;mysql&#x2F;mysql_login  常用于内网中的批量以及单主机的登录测试  2、auxiliary&#x2F;scanner&#x2F;mysql&#x2F;mysql_hashdump  mysql 的mysql.user 表的hash 对应的sql语句：SELECT HOST,USER,PASSWORD FROM mysql.user  3、">
+<meta name="description" content="DIRB使用指南">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MSF渗透Mysql">
-<meta property="og:url" content="https://gnwing.github.io/2022/01/09/MSF%E6%B8%97%E9%80%8FMysql/index.html">
+<meta property="og:title" content="DIRB使用指南">
+<meta property="og:url" content="https://gnwing.github.io/2022/01/10/DIRB%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/index.html">
 <meta property="og:site_name" content="GNWING&#39;s BLOG">
-<meta property="og:description" content="MSF渗透Mysql 常用攻击模块  1、auxiliary&#x2F;scanner&#x2F;mysql&#x2F;mysql_login  常用于内网中的批量以及单主机的登录测试  2、auxiliary&#x2F;scanner&#x2F;mysql&#x2F;mysql_hashdump  mysql 的mysql.user 表的hash 对应的sql语句：SELECT HOST,USER,PASSWORD FROM mysql.user  3、">
+<meta property="og:description" content="DIRB使用指南">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-01-09T15:31:59.037Z">
-<meta property="article:modified_time" content="2022-01-09T15:31:59.037Z">
+<meta property="article:published_time" content="2022-01-10T03:23:26.756Z">
+<meta property="article:modified_time" content="2022-01-10T03:23:26.756Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="https://gnwing.github.io/2022/01/09/MSF渗透Mysql/"/>
+  <link rel="canonical" href="https://gnwing.github.io/2022/01/10/DIRB使用指南/"/>
 
 
 
 
 
-  <title>MSF渗透Mysql | GNWING's BLOG</title>
+  <title>DIRB使用指南 | GNWING's BLOG</title>
   
 
 
@@ -252,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://gnwing.github.io/2022/01/09/MSF%E6%B8%97%E9%80%8FMysql/">
+    <link itemprop="mainEntityOfPage" href="https://gnwing.github.io/2022/01/10/DIRB%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -269,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MSF渗透Mysql</h1>
+          <h1 class="post-title" itemprop="name headline">DIRB使用指南</h1>
         
 
         <div class="post-meta">
@@ -281,8 +281,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-01-09T15:31:59+00:00">
-                2022-01-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-01-10T11:23:26+08:00">
+                2022-01-10
               </time>
             
 
@@ -319,38 +319,28 @@
       
 
       
-        <h2 id="MSF渗透Mysql"><a href="#MSF渗透Mysql" class="headerlink" title="MSF渗透Mysql"></a>MSF渗透Mysql</h2><blockquote>
-<p>常用攻击模块</p>
-</blockquote>
-<p>1、auxiliary/scanner/mysql/mysql_login</p>
+        <h2 id="DIRB使用指南"><a href="#DIRB使用指南" class="headerlink" title="DIRB使用指南"></a>DIRB使用指南</h2><a id="more"></a>
+
+<h5 id="1、普通爆破"><a href="#1、普通爆破" class="headerlink" title="1、普通爆破"></a>1、普通爆破</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirb http:&#x2F;&#x2F;victim.com&#x2F; .&#x2F;ASP.txt</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>常用于内网中的批量以及单主机的登录测试</li>
+<li><a href="http://victim.com" target="_blank" rel="noopener">http://victim.com</a> 为爆破的网址</li>
+<li>ASP.txt 为爆破用的字典</li>
 </ul>
-<p>2、auxiliary/scanner/mysql/mysql_hashdump</p>
-<ul>
-<li>mysql 的mysql.user 表的hash</li>
-<li>对应的sql语句：SELECT HOST,USER,PASSWORD FROM mysql.user</li>
-</ul>
-<p>3、auxiliary/scanner/mysql/mysql_version</p>
-<ul>
-<li>常用于内网中的批量mysql主机发现</li>
-</ul>
-<p>4、auxiliary/admin/mysql/mysql_sql</p>
-<ul>
-<li>执行sql语句，在目标机没有web界面等无法用脚本执行的环境</li>
-</ul>
-<p>5、exploit/multi/mysql/mysql_udf_payload</p>
-<ul>
-<li>常用于root启动的MySQL 并 root 的udf提权</li>
-</ul>
-<p>6、exploit/windows/mysql/mysql_mof</p>
-<ul>
-<li>mysql mof提权</li>
-</ul>
-<p>7、exploit/windows/mysql/scrutinizer_upload_exec</p>
-<ul>
-<li>上传文件执行</li>
-</ul>
+<h5 id="2、多字典挂载"><a href="#2、多字典挂载" class="headerlink" title="2、多字典挂载"></a>2、多字典挂载</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirb http:&#x2F;&#x2F;victim.com&#x2F; .&#x2F;ASP.txt,.&#x2F;DIR.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="3、自定义UA"><a href="#3、自定义UA" class="headerlink" title="3、自定义UA"></a>3、自定义UA</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirb http:&#x2F;&#x2F;victim.com&#x2F; .&#x2F;ASP.txt -a &quot;Mozilla&#x2F;5.0 (compatible; Googlebot&#x2F;2.1; +http:&#x2F;&#x2F;www.google.com&#x2F;bot.html)&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="4、自定义cookie"><a href="#4、自定义cookie" class="headerlink" title="4、自定义cookie"></a>4、自定义cookie</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirb http:&#x2F;&#x2F;victim.com&#x2F; .&#x2F;DIR.txt -a &quot;Mozilla&#x2F;5.0 (compatible; Googlebot&#x2F;2.1; +http:&#x2F;&#x2F;www.google.com&#x2F;bot.html)&quot; -c &quot;ASP.NET_SessionId&#x3D;jennqviqmc2vws55o4ggwu45&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="5、自定义毫秒延迟"><a href="#5、自定义毫秒延迟" class="headerlink" title="5、自定义毫秒延迟"></a>5、自定义毫秒延迟</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirb http:&#x2F;&#x2F;victim.com&#x2F; .&#x2F;DIR.txt -a &quot;Mozilla&#x2F;5.0 (compatible; Googlebot&#x2F;2.1; +http:&#x2F;&#x2F;www.google.com&#x2F;bot.html)&quot; -c &quot;ASP.NET_SessionId&#x3D;jennqviqmc2vws55o4ggwu45&quot; -z 100</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -375,8 +365,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2022/01/09/MSF%E6%B8%97%E9%80%8FSQL%20SERVER/" rel="next" title="MSF渗透SQL SERVER">
-                <i class="fa fa-chevron-left"></i> MSF渗透SQL SERVER
+              <a href="/2022/01/10/MSF%E6%B8%97%E9%80%8FMysql/" rel="next" title="MSF渗透Mysql">
+                <i class="fa fa-chevron-left"></i> MSF渗透Mysql
               </a>
             
           </div>
@@ -385,8 +375,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2022/01/09/MSF%E4%B8%BB%E6%9C%BA%E5%8F%91%E7%8E%B0/" rel="prev" title="MSF主机发现">
-                MSF主机发现 <i class="fa fa-chevron-right"></i>
+              <a href="/2022/01/10/test3/" rel="prev" title="test3">
+                test3 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -464,7 +454,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -519,7 +509,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MSF渗透Mysql"><span class="nav-number">1.</span> <span class="nav-text">MSF渗透Mysql</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#DIRB使用指南"><span class="nav-number">1.</span> <span class="nav-text">DIRB使用指南</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、普通爆破"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1、普通爆破</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、多字典挂载"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">2、多字典挂载</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、自定义UA"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">3、自定义UA</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、自定义cookie"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">4、自定义cookie</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5、自定义毫秒延迟"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">5、自定义毫秒延迟</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

