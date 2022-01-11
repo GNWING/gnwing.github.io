@@ -2776,3 +2776,15 @@ body {
   -moz-background-size: cover;
   -ms-background-size: cover;
 }
+.content-wrap {
+  opacity: 0.9;
+}
+.sidebar {
+  opacity: 0.9;
+}
+.header-inner {
+  background: rgba(255,255,255,0.9);
+}
+.popup {
+  opacity: 0.9;
+}
