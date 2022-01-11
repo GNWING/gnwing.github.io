@@ -2765,3 +2765,10 @@ ul.breadcrumb li:last-child {
     margin-bottom: 10px;
   }
 }
+body {
+  background: url("/images/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: 50% 50%;
+}
