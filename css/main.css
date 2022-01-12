@@ -1917,6 +1917,16 @@ pre code {
 .back-to-top.back-to-top-on:hover {
   opacity: 0.8;
 }
+.reading-progress-bar {
+  --progress: 0;
+  background: #37c6c0;
+  height: 3px;
+  position: fixed;
+  z-index: 50;
+  width: var(--progress);
+  left: 0;
+  top: 0;
+}
 .rtl.post-body p,
 .rtl.post-body a,
 .rtl.post-body h1,
@@ -3016,7 +3026,7 @@ body {
   -ms-background-size: cover;
 }
 .content-wrap {
-  background: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0);
 }
 .sidebar {
   background: rgba(255,255,255,0.7);
@@ -3028,10 +3038,10 @@ body {
   background: rgba(255,255,255,0.7);
 }
 .main-inner {
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255,255,255,0);
 }
 .post-block {
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255,255,255,0);
   margin-top: 24px;
   margin-bottom: 24px;
   padding: 20px;
