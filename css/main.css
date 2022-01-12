@@ -2533,6 +2533,7 @@ ul.breadcrumb li:last-child {
   }
 }
 .main-inner {
+  background: rgba(255,255,255,0.8);
   border-radius: initial;
   box-sizing: border-box;
   width: calc(100% - 252px);
@@ -2823,6 +2824,9 @@ body {
   -o-background-size: cover;
   -moz-background-size: cover;
   -ms-background-size: cover;
+}
+.content-wrap {
+  background: rgba(255,255,255,0.7);
 }
 .sidebar {
   background: rgba(255,255,255,0.7);
