@@ -3210,7 +3210,7 @@ body {
   -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
 }
 .post-block {
-  background: #000 none repeat scroll !important;
+  background: rgba(0,0,0,0.8) none repeat scroll !important;
   margin-top: 24px;
   margin-bottom: 24px;
   padding: 20px;
