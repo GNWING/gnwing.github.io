@@ -3151,6 +3151,7 @@ mark.search-keyword {
 }
 .links-of-author-item a {
   border-bottom: 0;
+  color: #fff;
   border-radius: 4px;
   display: block;
 }
@@ -3192,7 +3193,7 @@ body {
 .content-wrap {
   opacity: 0.9;
 }
-.sidebar {
+.header-inner {
   opacity: 0.9;
 }
 .sidebar-inner {
