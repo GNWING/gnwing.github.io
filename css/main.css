@@ -3192,14 +3192,11 @@ body {
 .content-wrap {
   opacity: 0.9;
 }
-.main-inner {
-  opacity: 0.9;
-}
 .sidebar {
   opacity: 0.9;
 }
-.header-inner {
-  background: rgba(255,255,255,0.9);
+.sidebar-inner {
+  background: rgba(255,255,255,0.7) none repeat scroll !important;
 }
 .popup {
   opacity: 0.9;
@@ -3212,7 +3209,7 @@ body {
   -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
 }
 .post-block {
-  background-color: #fff;
+  background: rgba(255,255,255,0.7) none repeat scroll !important;
   margin-top: 24px;
   margin-bottom: 24px;
   padding: 20px;
