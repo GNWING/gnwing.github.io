@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/bitbug_favicon32.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/bitbug_favicon16.jpg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="msvalidate.01" content="1D9E49B630251F27C1D0F7C5A2BF7578">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"gnwing.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":true,"nav":null,"activeClass":"valine"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeInRightBig","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="博客搭建记录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HEXO博客搭建">
+<meta property="og:url" content="https://gnwing.github.io/posts/4e2bb0c3/index.html">
+<meta property="og:site_name" content="GNWING&#39;s BLOG">
+<meta property="og:description" content="博客搭建记录">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gnwing.github.io/posts/4e2bb0c3/.%5Cpicture%5CHexo_Blog_Setup%5C1.jpeg">
+<meta property="og:image" content="https://gnwing.github.io/posts/4e2bb0c3/.%5Cpicture%5CHexo_Blog_Setup%5C2.jpeg">
+<meta property="og:image" content="https://gnwing.github.io/posts/4e2bb0c3/.%5Cpicture%5CHexo_Blog_Setup%5C3.jpeg">
+<meta property="og:image" content="https://gnwing.github.io/posts/4e2bb0c3/.%5Cpicture%5CHexo_Blog_Setup%5C4.jpg">
+<meta property="og:image" content="https://gnwing.github.io/posts/4e2bb0c3/.%5Cpicture%5CHexo_Blog_Setup%5C5.jpg">
+<meta property="article:published_time" content="2022-03-13T13:38:22.000Z">
+<meta property="article:modified_time" content="2022-03-13T13:57:21.489Z">
+<meta property="article:author" content="GN--WING">
+<meta property="article:tag" content="Blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gnwing.github.io/posts/4e2bb0c3/.%5Cpicture%5CHexo_Blog_Setup%5C1.jpeg">
+
+
+<link rel="canonical" href="https://gnwing.github.io/posts/4e2bb0c3/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://gnwing.github.io/posts/4e2bb0c3/","path":"posts/4e2bb0c3/","title":"HEXO博客搭建"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>HEXO博客搭建 | GNWING's BLOG</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">GNWING's BLOG</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录学习过程</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>guestbook</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="nav-number">1.</span> <span class="nav-text">1. 环境准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%85Hexo"><span class="nav-number">2.</span> <span class="nav-text">2. 安装Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E4%BD%BF%E7%94%A8npm%E5%AE%89%E8%A3%85hexo"><span class="nav-number">2.1.</span> <span class="nav-text">2.1. 使用npm安装hexo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8D%9A%E5%AE%A2"><span class="nav-number">2.2.</span> <span class="nav-text">2.2. 初始化博客</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88"><span class="nav-number">2.3.</span> <span class="nav-text">2.3. 本地预览</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%88%9B%E5%BB%BAGithub-Pages"><span class="nav-number">3.</span> <span class="nav-text">3. 创建Github Pages</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.</span> <span class="nav-text">3.1. 远程仓库配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E5%90%8C%E6%AD%A5%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E8%87%B3GitHub"><span class="nav-number">3.2.</span> <span class="nav-text">3.2. 同步本地文件至GitHub</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-%E6%B7%BB%E5%8A%A0GitHub-Actions"><span class="nav-number">3.3.</span> <span class="nav-text">3.3. 添加GitHub Actions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-%E6%8E%A8%E9%80%81%E4%BB%93%E5%BA%93%EF%BC%8C%E6%B5%8B%E8%AF%95Actions"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 推送仓库，测试Actions</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="GN--WING"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">GN--WING</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/GNWING" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;GNWING" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:gn-wing.foxmail.com" title="E-Mail → mailto:gn-wing.foxmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/GNWING" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://gnwing.github.io/posts/4e2bb0c3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="GN--WING">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GNWING's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HEXO博客搭建
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-13 21:38:22 / Modified: 21:57:21" itemprop="dateCreated datePublished" datetime="2022-03-13T21:38:22+08:00">2022-03-13</time>
+    </span>
+
+  
+    <span id="/posts/4e2bb0c3/" class="post-meta-item leancloud_visitors" data-flag-title="HEXO博客搭建" title="Views">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine: </span>
+  
+    <a title="valine" href="/posts/4e2bb0c3/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/posts/4e2bb0c3/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>3k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>3 mins.</span>
+    </span>
+</div>
+
+            <div class="post-description">博客搭建记录</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>目录：</p>
+<!-- vscode-markdown-toc -->
+<pre><code>* 1. [环境准备](#)
+* 2. [安装Hexo](#Hexo)
+    * 2.1. [使用npm安装hexo](#npmhexo)
+    * 2.2. [初始化博客](#-1)
+    * 2.3. [本地预览](#-1)
+* 3. [创建Github Pages](#GithubPages)
+    * 3.1. [远程仓库配置](#-1)
+    * 3.2. [同步本地文件至GitHub](#GitHub)
+    * 3.3. [添加GitHub Actions](#GitHubActions)
+</code></pre>
+<!-- vscode-markdown-toc-config
+    numbering=true
+    autoSave=true
+    /vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
+
+
+
+<h3 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1. 环境准备"></a>1. <a name=''></a>环境准备</h3><ul>
+<li><a target="_blank" rel="noopener" href='https://git-scm.com/' title='官方下载页面'>Git</a></li>
+<li><a target="_blank" rel="noopener" href='https://nodejs.org/en/download/' title='官方下载页面'>Node.js</a> <blockquote>
+<p>Node包含npm</p>
+</blockquote>
+</li>
+</ul>
+<p>查看是否安装成功</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br><span class="line">node -v</span><br></pre></td></tr></table></figure>
+<p>——</p>
+<h3 id="2-安装Hexo"><a href="#2-安装Hexo" class="headerlink" title="2. 安装Hexo"></a>2. <a name='Hexo'></a>安装Hexo</h3><h4 id="2-1-使用npm安装hexo"><a href="#2-1-使用npm安装hexo" class="headerlink" title="2.1. 使用npm安装hexo"></a>2.1. <a name='npmhexo'></a>使用npm安装hexo</h4><p>在计算机本地新建文件夹，右键打开git bash。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-初始化博客"><a href="#2-2-初始化博客" class="headerlink" title="2.2. 初始化博客"></a>2.2. <a name='-1'></a>初始化博客</h4><p>在新建的文件夹中打开git bash或Terminal</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 初始化</span><br><span class="line">hexo init &lt;folder&gt;</span><br><span class="line"># 进入目录</span><br><span class="line">cd &lt;folder&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p>此时，&lt;folder&gt;目录下有类似下面的目录结构</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── .GitHub </span><br><span class="line">├── node_modules   # Hexo 所需依赖</span><br><span class="line">├── _config.yml    # Hexo 全局配置文件</span><br><span class="line">├── package.json   # npm软件包及版本信息</span><br><span class="line">├── scaffolds      # 模版文件夹</span><br><span class="line">|   ├── draft.md   # 草稿模板</span><br><span class="line">|   ├── page.md    # 页面模板</span><br><span class="line">|   └── post.md    # 文章模板</span><br><span class="line">├── source         # 资源文件夹</span><br><span class="line">|   ├── _drafts    # 草稿文件夹</span><br><span class="line">|   └── _posts     # 文章文件夹</span><br><span class="line">├── .gitignore     # Git 忽略文件信息</span><br><span class="line">├── _config.[主题名].yml # 主题的配置文件</span><br><span class="line">└── themes         # 主题文件夹</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3-本地预览"><a href="#2-3-本地预览" class="headerlink" title="2.3. 本地预览"></a>2.3. <a name='-1'></a>本地预览</h4><p>安装完成后，先在本地预览查看是否安装成功</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 以默认端口启动本地预览，默认地址为http://localhost:4000</span><br><span class="line">hexo s</span><br><span class="line"># 若要指定端口，则使用-p 参数，如8888端口</span><br><span class="line">hexo s -p 8888</span><br></pre></td></tr></table></figure>
+<p>在浏览器中访问默认地址即可</p>
+<h3 id="3-创建Github-Pages"><a href="#3-创建Github-Pages" class="headerlink" title="3. 创建Github Pages"></a>3. <a name='GithubPages'></a>创建Github Pages</h3><h4 id="3-1-远程仓库配置"><a href="#3-1-远程仓库配置" class="headerlink" title="3.1. 远程仓库配置"></a>3.1. <a name='-1'></a>远程仓库配置</h4><p>因为要使用Github actions来进行自动部署，所以需要用到2个仓库。</p>
+<p>假设分别设为以下2个仓库：</p>
+<ul>
+<li><p>仓库1：<a href="mailto:&#x67;&#x69;&#116;&#x40;&#103;&#x69;&#x74;&#x68;&#x75;&#x62;&#46;&#99;&#111;&#109;">&#x67;&#x69;&#116;&#x40;&#103;&#x69;&#x74;&#x68;&#x75;&#x62;&#46;&#99;&#111;&#109;</a>:GNWING/Blog_Source  ：#该仓库存放源文件，包括编辑的md文章，hexo项目文件，即对应上述的本地初始化的文件夹，建议设置为私有，可以防止配置文件等信息泄露，</p>
+</li>
+<li><p>仓库2：<a href="mailto:&#103;&#105;&#116;&#x40;&#103;&#x69;&#116;&#104;&#117;&#98;&#46;&#x63;&#x6f;&#x6d;">&#103;&#105;&#116;&#x40;&#103;&#x69;&#116;&#104;&#117;&#98;&#46;&#x63;&#x6f;&#x6d;</a>:GNWING/GNWING.github.io ：#存放的是使用源文件生产的静态资源文件，一般对应生成的public文件夹，就是GitHub Pages的页面内容</p>
+</li>
+</ul>
+<p>创建好上面两个仓库后，还需要对仓库进行如下设置：</p>
+<p>1、ACCESS_TOKEN:<br>这个 ACCESS_TOKEN 是访问 GitHub API 的令牌，可以在 GitHub 主页，点击个人头像，Settings -&gt; Developer settings -&gt; Personal access tokens 进行生成或更新，第一次生成后你可以看到这个令牌，然后再也不会显示，因此你需要记下来，假如这个字符串是 aaa，然后打开仓库 1 的设置页面，设置 secrets，加入环境变量， name 是 ACCESS_TOKEN，value 是 aaa。如下图所示：<br><img src=".%5Cpicture%5CHexo_Blog_Setup%5C1.jpeg" alt="ACCESS_TOKEN"><br><img src=".%5Cpicture%5CHexo_Blog_Setup%5C2.jpeg" alt="ACCESS_TOKEN"><br><img src=".%5Cpicture%5CHexo_Blog_Setup%5C3.jpeg" alt="ACCESS_TOKEN"></p>
+<h4 id="3-2-同步本地文件至GitHub"><a href="#3-2-同步本地文件至GitHub" class="headerlink" title="3.2. 同步本地文件至GitHub"></a>3.2. <a name='GitHub'></a>同步本地文件至GitHub</h4><p>打开安装Hexo时创建的&lt;folder&gt;，并右键打开git bash或Terminal:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 初始化Git仓库</span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line"># 关联到远程Git仓库（源码）</span><br><span class="line">git remote add origin https://github.com/GNWING/Blog_Source.git</span><br><span class="line"></span><br><span class="line"># 配置对应分支</span><br><span class="line">git branch -M main</span><br><span class="line"></span><br><span class="line"># 上传</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="3-3-添加GitHub-Actions"><a href="#3-3-添加GitHub-Actions" class="headerlink" title="3.3. 添加GitHub Actions"></a>3.3. <a name='GitHubActions'></a>添加GitHub Actions</h4><p>在仓库 1 的根目录下，创建 .github/workflows/main.yml 文件，这就是 GitHub Actions 功能的配置文件，用于告诉 GitHub 要做哪些事情，写入以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">name: Deploy GitHub Pages</span><br><span class="line"></span><br><span class="line"># 触发条件：在 push 到 master 分支后</span><br><span class="line">on:</span><br><span class="line">  push:</span><br><span class="line">    branches:</span><br><span class="line">      - main</span><br><span class="line"></span><br><span class="line"># 任务</span><br><span class="line">jobs:</span><br><span class="line">  build-and-deploy:</span><br><span class="line">    # 服务器环境：最新版 Ubuntu</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line">    steps:</span><br><span class="line">      # 拉取代码</span><br><span class="line">      - name: Checkout</span><br><span class="line">        uses: actions/checkout@v2</span><br><span class="line">        with:</span><br><span class="line">          persist-credentials: false</span><br><span class="line"></span><br><span class="line">      # 设置Hexo所需的Node.js版本，高版本Node.js在执行时会报错</span><br><span class="line">      - name: Use Node.js 12.x</span><br><span class="line">        uses: actions/setup-node@v1</span><br><span class="line">        with:</span><br><span class="line">          node-version: &#x27;12.x&#x27;</span><br><span class="line">      </span><br><span class="line">      # 在服务器安装Hexo，用于后续生成静态文件</span><br><span class="line">      - name: install hexo-cli</span><br><span class="line">        run: npm install -g hexo-cli</span><br><span class="line">      - name: Cache NPM dependencies</span><br><span class="line">        uses: actions/cache@v2</span><br><span class="line">        with:</span><br><span class="line">          path: node_modules</span><br><span class="line">          key: $&#123;&#123; runner.OS &#125;&#125;-npm-cache</span><br><span class="line">          restore-keys: |</span><br><span class="line">            $&#123;&#123; runner.OS &#125;&#125;-npm-cache</span><br><span class="line">      # 安装相关依赖</span><br><span class="line">      - name: Install Dependencies</span><br><span class="line">        run: npm install</span><br><span class="line">      - name: clean</span><br><span class="line">        run: hexo clean</span><br><span class="line">      - name: Build</span><br><span class="line">        run: npm run build</span><br><span class="line"></span><br><span class="line">      # 2、部署到 GitHub Pages</span><br><span class="line">      - name: Deploy</span><br><span class="line">        uses: JamesIves/github-pages-deploy-action@releases/v3</span><br><span class="line">        with:</span><br><span class="line">          ACCESS_TOKEN: $&#123;&#123; secrets.ACCESS_TOKEN &#125;&#125;</span><br><span class="line">          REPOSITORY_NAME: GNWING/gnwing.github.io</span><br><span class="line">          BRANCH: master</span><br><span class="line">          FOLDER: public</span><br><span class="line">          #注意这里的 public 是仓库根目录下的 public，也就是 npm run build 生成静态资源的路径，比如有的人是 `docs/.vuepress/dist`</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-4-推送仓库，测试Actions"><a href="#3-4-推送仓库，测试Actions" class="headerlink" title="3.4 推送仓库，测试Actions"></a>3.4 推送仓库，测试Actions</h4><p>打开git bash或Terminal:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit &quot;Add Github Actions&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<p>推送后，在Gihub仓库Actions页面查看运行情况，若出现错误，可查看详细日志信息<br><img src=".%5Cpicture%5CHexo_Blog_Setup%5C4.jpg" alt="Actions"><br><img src=".%5Cpicture%5CHexo_Blog_Setup%5C5.jpg" alt="Actions"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>GN--WING
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://gnwing.github.io/posts/4e2bb0c3/" title="HEXO博客搭建">https://gnwing.github.io/posts/4e2bb0c3/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Blog/" rel="tag"># Blog</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/4a17b156/" rel="next" title="Hello World">
+                  Hello World <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="valine-comments"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GN--WING</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>Symbols count total: </span>
+    <span title="Symbols count total">3k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>Reading time total &asymp;</span>
+    <span title="Reading time total">3 mins.</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":null,"app_key":null,"server_url":null,"security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+
+
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"30XSsnU8dn2VAjg9jtlmlRs2-MdYXbMMI","appKey":"YMawXNrBiX8q5PKcTIY9dnU0","serverURLs":"https://30XSsnU8.api.lncldglobal.com/","placeholder":"输入你的评论\n昵称为必填项目，输入QQ号可以直接获取用户名和头像，并且省去了填写邮箱的麻烦！\n虽然email不是必选，但是填写了email可以收到推送通知哦！","avatar":"","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":true,"requiredFields":["nick"],"el":"#valine-comments","path":"/posts/4e2bb0c3/"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.valine.el)
+    .then(() => NexT.utils.getScript(
+      'https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+      { condition: window.Valine }
+    ))
+    .then(() => {
+      new Valine(CONFIG.valine);
+    });
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
