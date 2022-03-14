@@ -23,34 +23,33 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"gnwing.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":true,"nav":null,"activeClass":"valine"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeInRightBig","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="博客搭建记录">
+<meta name="description" content="title: HEXO博客搭建date: 2022-03-13 21:38:22description: 博客搭建记录tags: Blog  目录：  * 1. [环境准备](#) * 2. [安装Hexo](#Hexo)     * 2.1. [使用npm安装hexo](#npmhexo)     * 2.2. [初始化博客](#-1)     * 2.3. [本地预览](#-1) * 3.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HEXO博客搭建">
-<meta property="og:url" content="https://gnwing.github.io/posts/4e2bb0c3/index.html">
+<meta property="og:title" content="HEXO博客搭建及自动化部署">
+<meta property="og:url" content="https://gnwing.github.io/posts/951732e0/index.html">
 <meta property="og:site_name" content="GNWING&#39;s BLOG">
-<meta property="og:description" content="博客搭建记录">
+<meta property="og:description" content="title: HEXO博客搭建date: 2022-03-13 21:38:22description: 博客搭建记录tags: Blog  目录：  * 1. [环境准备](#) * 2. [安装Hexo](#Hexo)     * 2.1. [使用npm安装hexo](#npmhexo)     * 2.2. [初始化博客](#-1)     * 2.3. [本地预览](#-1) * 3.">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://gnwing.github.io/posts/4e2bb0c3/.%5Cpicture%5CHexo_Blog_Setup%5C1.jpeg">
-<meta property="og:image" content="https://gnwing.github.io/posts/4e2bb0c3/.%5Cpicture%5CHexo_Blog_Setup%5C2.jpeg">
-<meta property="og:image" content="https://gnwing.github.io/posts/4e2bb0c3/.%5Cpicture%5CHexo_Blog_Setup%5C3.jpeg">
-<meta property="og:image" content="https://gnwing.github.io/posts/4e2bb0c3/.%5Cpicture%5CHexo_Blog_Setup%5C4.jpg">
-<meta property="og:image" content="https://gnwing.github.io/posts/4e2bb0c3/.%5Cpicture%5CHexo_Blog_Setup%5C5.jpg">
-<meta property="article:published_time" content="2022-03-13T13:38:22.000Z">
-<meta property="article:modified_time" content="2022-03-13T15:16:13.205Z">
+<meta property="og:image" content="https://gnwing.github.io/posts/951732e0/.%5CHEXO%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8F%8A%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%5C1.jpeg">
+<meta property="og:image" content="https://gnwing.github.io/posts/951732e0/.%5CHEXO%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8F%8A%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%5C2.jpeg">
+<meta property="og:image" content="https://gnwing.github.io/posts/951732e0/.%5CHEXO%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8F%8A%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%5C3.jpeg">
+<meta property="og:image" content="https://gnwing.github.io/posts/951732e0/.%5CHEXO%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8F%8A%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%5C4.jpg">
+<meta property="og:image" content="https://gnwing.github.io/posts/951732e0/.%5CHEXO%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8F%8A%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%5C5.jpg">
+<meta property="article:published_time" content="2022-03-14T14:38:49.000Z">
+<meta property="article:modified_time" content="2022-03-14T14:41:55.067Z">
 <meta property="article:author" content="GN--WING">
-<meta property="article:tag" content="Blog">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gnwing.github.io/posts/4e2bb0c3/.%5Cpicture%5CHexo_Blog_Setup%5C1.jpeg">
+<meta name="twitter:image" content="https://gnwing.github.io/posts/951732e0/.%5CHEXO%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8F%8A%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%5C1.jpeg">
 
 
-<link rel="canonical" href="https://gnwing.github.io/posts/4e2bb0c3/">
+<link rel="canonical" href="https://gnwing.github.io/posts/951732e0/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://gnwing.github.io/posts/4e2bb0c3/","path":"posts/4e2bb0c3/","title":"HEXO博客搭建"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://gnwing.github.io/posts/951732e0/","path":"posts/951732e0/","title":"HEXO博客搭建及自动化部署"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>HEXO博客搭建 | GNWING's BLOG</title>
+<title>HEXO博客搭建及自动化部署 | GNWING's BLOG</title>
   
 
 
@@ -178,7 +177,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -231,7 +230,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://gnwing.github.io/posts/4e2bb0c3/">
+    <link itemprop="mainEntityOfPage" href="https://gnwing.github.io/posts/951732e0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -244,7 +243,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          HEXO博客搭建
+          HEXO博客搭建及自动化部署
         </h1>
 
         <div class="post-meta-container">
@@ -256,11 +255,11 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-03-13 21:38:22 / Modified: 23:16:13" itemprop="dateCreated datePublished" datetime="2022-03-13T21:38:22+08:00">2022-03-13</time>
+      <time title="Created: 2022-03-14 22:38:49 / Modified: 22:41:55" itemprop="dateCreated datePublished" datetime="2022-03-14T22:38:49+08:00">2022-03-14</time>
     </span>
 
   
-    <span id="/posts/4e2bb0c3/" class="post-meta-item leancloud_visitors" data-flag-title="HEXO博客搭建" title="Views">
+    <span id="/posts/951732e0/" class="post-meta-item leancloud_visitors" data-flag-title="HEXO博客搭建及自动化部署" title="Views">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -282,8 +281,8 @@
     </span>
     <span class="post-meta-item-text">Valine: </span>
   
-    <a title="valine" href="/posts/4e2bb0c3/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/posts/4e2bb0c3/" itemprop="commentCount"></span>
+    <a title="valine" href="/posts/951732e0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/posts/951732e0/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -294,7 +293,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>3k</span>
+      <span>3.1k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -305,7 +304,6 @@
     </span>
 </div>
 
-            <div class="post-description">博客搭建记录</div>
         </div>
       </header>
 
@@ -313,7 +311,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>目录：</p>
+        <hr>
+<p>title: HEXO博客搭建<br>date: 2022-03-13 21:38:22<br>description: 博客搭建记录<br>tags: Blog</p>
+<hr>
+<p>目录：</p>
 <!-- vscode-markdown-toc -->
 <pre><code>* 1. [环境准备](#)
 * 2. [安装Hexo](#Hexo)
@@ -357,13 +358,13 @@
 <h3 id="3-创建Github-Pages"><a href="#3-创建Github-Pages" class="headerlink" title="3. 创建Github Pages"></a>3. <a name='GithubPages'></a>创建Github Pages</h3><h4 id="3-1-远程仓库配置"><a href="#3-1-远程仓库配置" class="headerlink" title="3.1. 远程仓库配置"></a>3.1. <a name='-1'></a>远程仓库配置</h4><p>因为要使用Github actions来进行自动部署，所以需要用到2个仓库。</p>
 <p>假设分别设为以下2个仓库：</p>
 <ul>
-<li><p>仓库1：<a href="mailto:&#103;&#x69;&#116;&#64;&#x67;&#105;&#116;&#x68;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;">&#103;&#x69;&#116;&#64;&#x67;&#105;&#116;&#x68;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;</a>:GNWING/Blog_Source  ：#该仓库存放源文件，包括编辑的md文章，hexo项目文件，即对应上述的本地初始化的文件夹，建议设置为私有，可以防止配置文件等信息泄露，</p>
+<li><p>仓库1：<a href="mailto:&#x67;&#105;&#116;&#64;&#x67;&#105;&#116;&#x68;&#x75;&#98;&#x2e;&#x63;&#111;&#109;">&#x67;&#105;&#116;&#64;&#x67;&#105;&#116;&#x68;&#x75;&#98;&#x2e;&#x63;&#111;&#109;</a>:GNWING/Blog_Source  ：#该仓库存放源文件，包括编辑的md文章，hexo项目文件，即对应上述的本地初始化的文件夹，建议设置为私有，可以防止配置文件等信息泄露，</p>
 </li>
-<li><p>仓库2：<a href="mailto:&#103;&#105;&#116;&#x40;&#x67;&#x69;&#116;&#x68;&#117;&#x62;&#x2e;&#x63;&#x6f;&#x6d;">&#103;&#105;&#116;&#x40;&#x67;&#x69;&#116;&#x68;&#117;&#x62;&#x2e;&#x63;&#x6f;&#x6d;</a>:GNWING/GNWING.github.io ：#存放的是使用源文件生产的静态资源文件，一般对应生成的public文件夹，就是GitHub Pages的页面内容</p>
+<li><p>仓库2：<a href="mailto:&#103;&#x69;&#x74;&#64;&#x67;&#x69;&#x74;&#x68;&#x75;&#x62;&#46;&#99;&#x6f;&#109;">&#103;&#x69;&#x74;&#64;&#x67;&#x69;&#x74;&#x68;&#x75;&#x62;&#46;&#99;&#x6f;&#109;</a>:GNWING/GNWING.github.io ：#存放的是使用源文件生产的静态资源文件，一般对应生成的public文件夹，就是GitHub Pages的页面内容</p>
 </li>
 </ul>
 <p>创建好上面两个仓库后，还需要对仓库进行如下设置：</p>
-<p>1、ACCESS_TOKEN:<br>这个 ACCESS_TOKEN 是访问 GitHub API 的令牌，可以在 GitHub 主页，点击个人头像，Settings -&gt; Developer settings -&gt; Personal access tokens 进行生成或更新，第一次生成后你可以看到这个令牌，然后再也不会显示，因此你需要记下来，假如这个字符串是 aaa，然后打开仓库 1 的设置页面，设置 secrets，加入环境变量， name 是 ACCESS_TOKEN，value 是 aaa。如下图所示：<br><img src=".%5Cpicture%5CHexo_Blog_Setup%5C1.jpeg" alt="ACCESS_TOKEN"><br><img src=".%5Cpicture%5CHexo_Blog_Setup%5C2.jpeg" alt="ACCESS_TOKEN"><br><img src=".%5Cpicture%5CHexo_Blog_Setup%5C3.jpeg" alt="ACCESS_TOKEN"></p>
+<p>1、ACCESS_TOKEN:<br>这个 ACCESS_TOKEN 是访问 GitHub API 的令牌，可以在 GitHub 主页，点击个人头像，Settings -&gt; Developer settings -&gt; Personal access tokens 进行生成或更新，第一次生成后你可以看到这个令牌，然后再也不会显示，因此你需要记下来，假如这个字符串是 aaa，然后打开仓库 1 的设置页面，设置 secrets，加入环境变量， name 是 ACCESS_TOKEN，value 是 aaa。如下图所示：<br><img src=".%5CHEXO%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8F%8A%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%5C1.jpeg" alt="ACCESS_TOKEN"><br><img src=".%5CHEXO%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8F%8A%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%5C2.jpeg" alt="ACCESS_TOKEN"><br><img src=".%5CHEXO%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8F%8A%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%5C3.jpeg" alt="ACCESS_TOKEN"></p>
 <h4 id="3-2-同步本地文件至GitHub"><a href="#3-2-同步本地文件至GitHub" class="headerlink" title="3.2. 同步本地文件至GitHub"></a>3.2. <a name='GitHub'></a>同步本地文件至GitHub</h4><p>打开安装Hexo时创建的&lt;folder&gt;，并右键打开git bash或Terminal:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 初始化Git仓库</span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line"># 关联到远程Git仓库（源码）</span><br><span class="line">git remote add origin https://github.com/GNWING/Blog_Source.git</span><br><span class="line"></span><br><span class="line"># 配置对应分支</span><br><span class="line">git branch -M main</span><br><span class="line"></span><br><span class="line"># 上传</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
 
@@ -373,7 +374,7 @@
 
 <h4 id="3-4-推送仓库，测试Actions"><a href="#3-4-推送仓库，测试Actions" class="headerlink" title="3.4 推送仓库，测试Actions"></a>3.4 推送仓库，测试Actions</h4><p>打开git bash或Terminal:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit &quot;Add Github Actions&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
-<p>推送后，在Gihub仓库Actions页面查看运行情况，若出现错误，可查看详细日志信息<br><img src=".%5Cpicture%5CHexo_Blog_Setup%5C4.jpg" alt="Actions"><br><img src=".%5Cpicture%5CHexo_Blog_Setup%5C5.jpg" alt="Actions"></p>
+<p>推送后，在Gihub仓库Actions页面查看运行情况，若出现错误，可查看详细日志信息<br><img src=".%5CHEXO%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8F%8A%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%5C4.jpg" alt="Actions"><br><img src=".%5CHEXO%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8F%8A%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%5C5.jpg" alt="Actions"></p>
 
     </div>
 
@@ -391,7 +392,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>Post link: </strong>
-      <a href="https://gnwing.github.io/posts/4e2bb0c3/" title="HEXO博客搭建">https://gnwing.github.io/posts/4e2bb0c3/</a>
+      <a href="https://gnwing.github.io/posts/951732e0/" title="HEXO博客搭建及自动化部署">https://gnwing.github.io/posts/951732e0/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -399,19 +400,16 @@
 </ul>
 </div>
 
-          <div class="post-tags">
-              <a href="/tags/Blog/" rel="tag"># Blog</a>
-          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/posts/4a17b156/" rel="prev" title="Hello World">
+                  <i class="fa fa-chevron-left"></i> Hello World
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/posts/4a17b156/" rel="next" title="Hello World">
-                  Hello World <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -504,7 +502,7 @@
 
 
 
-<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"30XSsnU8dn2VAjg9jtlmlRs2-MdYXbMMI","appKey":"YMawXNrBiX8q5PKcTIY9dnU0","serverURLs":"https://30XSsnU8.api.lncldglobal.com/","placeholder":"输入你的评论\n昵称为必填项目，输入QQ号可以直接获取用户名和头像，并且省去了填写邮箱的麻烦！\n虽然email不是必选，但是填写了email可以收到推送通知哦！","avatar":"","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":true,"requiredFields":["nick"],"el":"#valine-comments","path":"/posts/4e2bb0c3/"}</script>
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"30XSsnU8dn2VAjg9jtlmlRs2-MdYXbMMI","appKey":"YMawXNrBiX8q5PKcTIY9dnU0","serverURLs":"https://30XSsnU8.api.lncldglobal.com/","placeholder":"输入你的评论\n昵称为必填项目，输入QQ号可以直接获取用户名和头像，并且省去了填写邮箱的麻烦！\n虽然email不是必选，但是填写了email可以收到推送通知哦！","avatar":"","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":true,"requiredFields":["nick"],"el":"#valine-comments","path":"/posts/951732e0/"}</script>
 <script>
 document.addEventListener('page:loaded', () => {
   NexT.utils.loadComments(CONFIG.valine.el)
