@@ -4,8 +4,6 @@
     <title>HEXO博客搭建及自动化部署</title>
     <url>/posts/951732e0/</url>
     <content><![CDATA[<hr>
-<p>title: HEXO博客搭建<br>date: 2022-03-13 21:38:22<br>description: 博客搭建记录<br>tags: Blog</p>
-<hr>
 <p>目录：</p>
 <!-- vscode-markdown-toc -->
 <pre><code>* 1. [环境准备](#)
@@ -50,9 +48,9 @@
 <h3 id="3-创建Github-Pages"><a href="#3-创建Github-Pages" class="headerlink" title="3. 创建Github Pages"></a>3. <a name='GithubPages'></a>创建Github Pages</h3><h4 id="3-1-远程仓库配置"><a href="#3-1-远程仓库配置" class="headerlink" title="3.1. 远程仓库配置"></a>3.1. <a name='-1'></a>远程仓库配置</h4><p>因为要使用Github actions来进行自动部署，所以需要用到2个仓库。</p>
 <p>假设分别设为以下2个仓库：</p>
 <ul>
-<li><p>仓库1：<a href="mailto:&#x67;&#105;&#116;&#64;&#x67;&#105;&#116;&#x68;&#x75;&#98;&#x2e;&#x63;&#111;&#109;">&#x67;&#105;&#116;&#64;&#x67;&#105;&#116;&#x68;&#x75;&#98;&#x2e;&#x63;&#111;&#109;</a>:GNWING/Blog_Source  ：#该仓库存放源文件，包括编辑的md文章，hexo项目文件，即对应上述的本地初始化的文件夹，建议设置为私有，可以防止配置文件等信息泄露，</p>
+<li><p>仓库1：<a href="mailto:&#x67;&#105;&#116;&#64;&#103;&#x69;&#116;&#x68;&#117;&#x62;&#x2e;&#x63;&#x6f;&#109;">&#x67;&#105;&#116;&#64;&#103;&#x69;&#116;&#x68;&#117;&#x62;&#x2e;&#x63;&#x6f;&#109;</a>:GNWING/Blog_Source  ：#该仓库存放源文件，包括编辑的md文章，hexo项目文件，即对应上述的本地初始化的文件夹，建议设置为私有，可以防止配置文件等信息泄露，</p>
 </li>
-<li><p>仓库2：<a href="mailto:&#103;&#x69;&#x74;&#64;&#x67;&#x69;&#x74;&#x68;&#x75;&#x62;&#46;&#99;&#x6f;&#109;">&#103;&#x69;&#x74;&#64;&#x67;&#x69;&#x74;&#x68;&#x75;&#x62;&#46;&#99;&#x6f;&#109;</a>:GNWING/GNWING.github.io ：#存放的是使用源文件生产的静态资源文件，一般对应生成的public文件夹，就是GitHub Pages的页面内容</p>
+<li><p>仓库2：<a href="mailto:&#103;&#105;&#x74;&#64;&#103;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#111;&#109;">&#103;&#105;&#x74;&#64;&#103;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#111;&#109;</a>:GNWING/GNWING.github.io ：#存放的是使用源文件生产的静态资源文件，一般对应生成的public文件夹，就是GitHub Pages的页面内容</p>
 </li>
 </ul>
 <p>创建好上面两个仓库后，还需要对仓库进行如下设置：</p>
@@ -68,6 +66,9 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit &quot;Add Github Actions&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
 <p>推送后，在Gihub仓库Actions页面查看运行情况，若出现错误，可查看详细日志信息<br><img src=".%5CHEXO%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8F%8A%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%5C4.jpg" alt="Actions"><br><img src=".%5CHEXO%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8F%8A%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%5C5.jpg" alt="Actions"></p>
 ]]></content>
+      <tags>
+        <tag>Blog</tag>
+      </tags>
   </entry>
   <entry>
     <title>Hello World</title>
