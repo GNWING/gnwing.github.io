@@ -1,313 +1,314 @@
-<?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>HEXO博客搭建及自动化部署</title>
-    <url>/posts/951732e0/</url>
-    <content><![CDATA[<hr>
-<p>目录：</p>
-<!-- vscode-markdown-toc -->
-<pre><code>* 1. [环境准备](#)
-* 2. [安装Hexo](#Hexo)
-    * 2.1. [使用npm安装hexo](#npmhexo)
-    * 2.2. [初始化博客](#-1)
-    * 2.3. [本地预览](#-1)
-* 3. [创建Github Pages](#GithubPages)
-    * 3.1. [远程仓库配置](#-1)
-    * 3.2. [同步本地文件至GitHub](#GitHub)
-    * 3.3. [添加GitHub Actions](#GitHubActions)
-</code></pre>
-<!-- vscode-markdown-toc-config
-    numbering=true
-    autoSave=true
-    /vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/bitbug_favicon32.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/bitbug_favicon16.jpg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="msvalidate.01" content="1D9E49B630251F27C1D0F7C5A2BF7578">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
 
-<h3 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1. 环境准备"></a>1. <a name=''></a>环境准备</h3><ul>
-<li><a href='https://git-scm.com/' title='官方下载页面'>Git</a></li>
-<li><a href='https://nodejs.org/en/download/' title='官方下载页面'>Node.js</a> <blockquote>
-<p>Node包含npm</p>
-</blockquote>
-</li>
-</ul>
-<p>查看是否安装成功</p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">git --version</span><br><span class="line">node -v</span><br></pre></td></tr></table></figure>
-<p>——</p>
-<h3 id="2-安装Hexo"><a href="#2-安装Hexo" class="headerlink" title="2. 安装Hexo"></a>2. <a name='Hexo'></a>安装Hexo</h3><h4 id="2-1-使用npm安装hexo"><a href="#2-1-使用npm安装hexo" class="headerlink" title="2.1. 使用npm安装hexo"></a>2.1. <a name='npmhexo'></a>使用npm安装hexo</h4><p>在计算机本地新建文件夹，右键打开git bash。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<h4 id="2-2-初始化博客"><a href="#2-2-初始化博客" class="headerlink" title="2.2. 初始化博客"></a>2.2. <a name='-1'></a>初始化博客</h4><p>在新建的文件夹中打开git bash或Terminal</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 初始化</span><br><span class="line">hexo init &lt;folder&gt;</span><br><span class="line"># 进入目录</span><br><span class="line">cd &lt;folder&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-<p>此时，&lt;folder&gt;目录下有类似下面的目录结构</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── .GitHub </span><br><span class="line">├── node_modules   # Hexo 所需依赖</span><br><span class="line">├── _config.yml    # Hexo 全局配置文件</span><br><span class="line">├── package.json   # npm软件包及版本信息</span><br><span class="line">├── scaffolds      # 模版文件夹</span><br><span class="line">|   ├── draft.md   # 草稿模板</span><br><span class="line">|   ├── page.md    # 页面模板</span><br><span class="line">|   └── post.md    # 文章模板</span><br><span class="line">├── source         # 资源文件夹</span><br><span class="line">|   ├── _drafts    # 草稿文件夹</span><br><span class="line">|   └── _posts     # 文章文件夹</span><br><span class="line">├── .gitignore     # Git 忽略文件信息</span><br><span class="line">├── _config.[主题名].yml # 主题的配置文件</span><br><span class="line">└── themes         # 主题文件夹</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-3-本地预览"><a href="#2-3-本地预览" class="headerlink" title="2.3. 本地预览"></a>2.3. <a name='-1'></a>本地预览</h4><p>安装完成后，先在本地预览查看是否安装成功</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 以默认端口启动本地预览，默认地址为http://localhost:4000</span><br><span class="line">hexo s</span><br><span class="line"># 若要指定端口，则使用-p 参数，如8888端口</span><br><span class="line">hexo s -p 8888</span><br></pre></td></tr></table></figure>
-<p>在浏览器中访问默认地址即可</p>
-<h3 id="3-创建Github-Pages"><a href="#3-创建Github-Pages" class="headerlink" title="3. 创建Github Pages"></a>3. <a name='GithubPages'></a>创建Github Pages</h3><h4 id="3-1-远程仓库配置"><a href="#3-1-远程仓库配置" class="headerlink" title="3.1. 远程仓库配置"></a>3.1. <a name='-1'></a>远程仓库配置</h4><p>因为要使用Github actions来进行自动部署，所以需要用到2个仓库。</p>
-<p>假设分别设为以下2个仓库：</p>
-<ul>
-<li><p>仓库1：<a href="mailto:&#103;&#x69;&#116;&#64;&#103;&#105;&#116;&#x68;&#117;&#x62;&#x2e;&#99;&#x6f;&#x6d;">&#103;&#x69;&#116;&#64;&#103;&#105;&#116;&#x68;&#117;&#x62;&#x2e;&#99;&#x6f;&#x6d;</a>:GNWING/Blog_Source  ：#该仓库存放源文件，包括编辑的md文章，hexo项目文件，即对应上述的本地初始化的文件夹，建议设置为私有，可以防止配置文件等信息泄露，</p>
-</li>
-<li><p>仓库2：<a href="mailto:&#x67;&#105;&#116;&#x40;&#103;&#x69;&#x74;&#x68;&#x75;&#x62;&#x2e;&#99;&#x6f;&#109;">&#x67;&#105;&#116;&#x40;&#103;&#x69;&#x74;&#x68;&#x75;&#x62;&#x2e;&#99;&#x6f;&#109;</a>:GNWING/GNWING.github.io ：#存放的是使用源文件生产的静态资源文件，一般对应生成的public文件夹，就是GitHub Pages的页面内容</p>
-</li>
-</ul>
-<p>创建好上面两个仓库后，还需要对仓库进行如下设置：</p>
-<p>1、ACCESS_TOKEN:<br>这个 ACCESS_TOKEN 是访问 GitHub API 的令牌，可以在 GitHub 主页，点击个人头像，Settings -&gt; Developer settings -&gt; Personal access tokens 进行生成或更新，第一次生成后你可以看到这个令牌，然后再也不会显示，因此你需要记下来，假如这个字符串是 aaa，然后打开仓库 1 的设置页面，设置 secrets，加入环境变量， name 是 ACCESS_TOKEN，value 是 aaa。如下图所示：<br><img src="1.png" alt="ACCESS_TOKEN"><br><img src="2.png" alt="ACCESS_TOKEN"><br><img src="3.png" alt="ACCESS_TOKEN"></p>
-<h4 id="3-2-同步本地文件至GitHub"><a href="#3-2-同步本地文件至GitHub" class="headerlink" title="3.2. 同步本地文件至GitHub"></a>3.2. <a name='GitHub'></a>同步本地文件至GitHub</h4><p>打开安装Hexo时创建的&lt;folder&gt;，并右键打开git bash或Terminal:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 初始化Git仓库</span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line"># 关联到远程Git仓库（源码）</span><br><span class="line">git remote add origin https://github.com/GNWING/Blog_Source.git</span><br><span class="line"></span><br><span class="line"># 配置对应分支</span><br><span class="line">git branch -M main</span><br><span class="line"></span><br><span class="line"># 上传</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"gnwing.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":true,"nav":null,"activeClass":"valine"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeInRightBig","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="PMP模拟题（2）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PMP模拟题2">
+<meta property="og:url" content="https://gnwing.github.io/posts/947eb1c0/index.html">
+<meta property="og:site_name" content="GNWING&#39;s BLOG">
+<meta property="og:description" content="PMP模拟题（2）">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gnwing.github.io/_resources/97bf61a3ed47f907634fcd28c68661eb.png">
+<meta property="article:published_time" content="2023-06-01T05:28:24.000Z">
+<meta property="article:modified_time" content="2023-06-01T05:31:07.398Z">
+<meta property="article:author" content="GN--WING">
+<meta property="article:tag" content="PMP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gnwing.github.io/_resources/97bf61a3ed47f907634fcd28c68661eb.png">
 
 
-<h4 id="3-3-添加GitHub-Actions"><a href="#3-3-添加GitHub-Actions" class="headerlink" title="3.3. 添加GitHub Actions"></a>3.3. <a name='GitHubActions'></a>添加GitHub Actions</h4><p>在仓库 1 的根目录下，创建 .github/workflows/main.yml 文件，这就是 GitHub Actions 功能的配置文件，用于告诉 GitHub 要做哪些事情，写入以下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">name: Deploy GitHub Pages</span><br><span class="line"></span><br><span class="line"># 触发条件：在 push 到 master 分支后</span><br><span class="line">on:</span><br><span class="line">  push:</span><br><span class="line">    branches:</span><br><span class="line">      - main</span><br><span class="line"></span><br><span class="line"># 任务</span><br><span class="line">jobs:</span><br><span class="line">  build-and-deploy:</span><br><span class="line">    # 服务器环境：最新版 Ubuntu</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line">    steps:</span><br><span class="line">      # 拉取代码</span><br><span class="line">      - name: Checkout</span><br><span class="line">        uses: actions/checkout@v2</span><br><span class="line">        with:</span><br><span class="line">          persist-credentials: false</span><br><span class="line"></span><br><span class="line">      # 设置Hexo所需的Node.js版本，高版本Node.js在执行时会报错</span><br><span class="line">      - name: Use Node.js 12.x</span><br><span class="line">        uses: actions/setup-node@v1</span><br><span class="line">        with:</span><br><span class="line">          node-version: &#x27;12.x&#x27;</span><br><span class="line">      </span><br><span class="line">      # 在服务器安装Hexo，用于后续生成静态文件</span><br><span class="line">      - name: install hexo-cli</span><br><span class="line">        run: npm install -g hexo-cli</span><br><span class="line">      - name: Cache NPM dependencies</span><br><span class="line">        uses: actions/cache@v2</span><br><span class="line">        with:</span><br><span class="line">          path: node_modules</span><br><span class="line">          key: $&#123;&#123; runner.OS &#125;&#125;-npm-cache</span><br><span class="line">          restore-keys: |</span><br><span class="line">            $&#123;&#123; runner.OS &#125;&#125;-npm-cache</span><br><span class="line">      # 安装相关依赖</span><br><span class="line">      - name: Install Dependencies</span><br><span class="line">        run: npm install</span><br><span class="line">      - name: clean</span><br><span class="line">        run: hexo clean</span><br><span class="line">      - name: Build</span><br><span class="line">        run: npm run build</span><br><span class="line"></span><br><span class="line">      # 2、部署到 GitHub Pages</span><br><span class="line">      - name: Deploy</span><br><span class="line">        uses: JamesIves/github-pages-deploy-action@releases/v3</span><br><span class="line">        with:</span><br><span class="line">          ACCESS_TOKEN: $&#123;&#123; secrets.ACCESS_TOKEN &#125;&#125;</span><br><span class="line">          REPOSITORY_NAME: GNWING/gnwing.github.io</span><br><span class="line">          BRANCH: master</span><br><span class="line">          FOLDER: public</span><br><span class="line">          #注意这里的 public 是仓库根目录下的 public，也就是 npm run build 生成静态资源的路径，比如有的人是 `docs/.vuepress/dist`</span><br></pre></td></tr></table></figure>
+<link rel="canonical" href="https://gnwing.github.io/posts/947eb1c0/">
 
-<h4 id="3-4-推送仓库，测试Actions"><a href="#3-4-推送仓库，测试Actions" class="headerlink" title="3.4 推送仓库，测试Actions"></a>3.4 推送仓库，测试Actions</h4><p>打开git bash或Terminal:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit &quot;Add Github Actions&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
-<p>推送后，在Gihub仓库Actions页面查看运行情况，若出现错误，可查看详细日志信息<br><img src="4.JPG" alt="Actions"><br><img src="5.JPG" alt="Actions"></p>
-]]></content>
-      <tags>
-        <tag>Blog</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/posts/4a17b156/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://gnwing.github.io/posts/947eb1c0/","path":"posts/947eb1c0/","title":"PMP模拟题2"}</script>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>PMP模拟题2 | GNWING's BLOG</title>
+  
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-      <tags>
-        <tag>Hello_World</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>模拟题3</title>
-    <url>/posts/d07ff3e9/</url>
-    <content><![CDATA[<p>*【错题】<br>1、项目经理将运用混合型方法开始一个项目，但注意到某些团队成员仅了解预测型方法。项目经理首先需要做什么才能获得出色的项目绩效？<br>==A.评估每名团队成员所需的培训。==<br>B.向所有团队成员提供混合型方法方面的培训。<br>C.指导缺乏混合型方法知识的团队成员在工作中学习。<br>D.对团队进行改造，将混合型方法方面的专家包含进来。  </p>
-<p>正确答案：A，你的答案：C回答错误<br>解析：考查建设团队过程的工具。<br>部分团队成员能力不够，需要培训。因为仅了解预测型方法，这明显是敏捷教练的敏捷培训，A 是一种实事求是的态度，优先于 BC，且 ==B 的“所有团队成员”不妥==; ==C,“在工作中学习”不必然，过于武断===。考点：敏捷三种角色SM 的职责，需要评估并做敏捷培训。<br>《PMBOK》第6版342页，9.4.2.6-培训。这道题目的情景，大多数同学都能联想到培训，只是不太清楚这个培训该如何去组织。在组织中的培训通常分为两类，一类是由职能部门提供，另外一类由项目经理组织。前者是一种普惠式的培训，在培训内容上较难做到因人而异，也很难跟踪在培训后参与人员的能力提升，这些不足都是后者的优势。==由项目经理组织的培训首先要评估每个团队成员的能力短板，然后有针对性地设计内容，培训后还能够跟踪团队成员的绩效改善，进而为后续进一步的培训内容设计提供基础==。因此在团队成员遇到由能力不足所造成的障碍时，最好是由项目经理来组织有针对性的培训，所以A选项正确。==选项B，提供培训没有问题，但是缺少了对团队成员能力短板的评估==。==选项C，在培训完成后，可以对团队成员遇到的障碍进行指导，在A选项之后==。选项D，专家只能起到辅助作用，对团队管理的责任人是项目经理，错误。</p>
-<hr>
-<p><br></br><br>*【错题】<br>4、某敏捷项目的项目发起人告知项目负责人说。一位高管希望了解项目进展情况。项目负责人该做什么?<br>==A.邀请该高管来到项目会议室，以确定项目的信息发射源是否足其需要。==<br>B.主动联系项目管理办公室，向其索取状态报告模板，并按该模板的格式提供项目最新情况.<br>C.让项目发起人或产品负责人提供最新情况。因为产品负责人应尽力使团队免受障碍因囊影响。<br>D.提供项目共享驱动器的链接，以便该高管能够搜索其感兴趣的任何工件。  </p>
-<p>正确答案：A，你的答案：C回答错误<br>解析：考查敏捷方法相关知识(通过信息辐射源进行项目进展情况展示)。<br>《敏捷实践指南》P35、P105题干中一位高管希望了解敏捷项目的最新进展，==项目负责人作为仆人式领导应该了解相关方的沟通偏好，并制定相关的沟通策略。另外<strong>信息发射源它是一种向组织内其他成员提供信息，在不干扰团队的情况下实现信息共享的工具</strong>。因此选项A是了解相关方沟通偏好并解决相关方需求的较好的方式，所以选择该选项==。 选项C，==<strong>项目情况应由项目经理提供，而并非产品负责人，项目经理应该努力使团队不受阻碍</strong>==； 选项B，敏捷宣言中注重个体交付及可用的软件，而不是过程和工具，所以该选项不合适。 选项D，在项目管理中不同相关方对项目文档权限不一致，不应共享项目文档。</p>
-<hr>
-<p><br></br><br>【有争议】<br>*【错题】<br>5、一位关键相关方没有空批准项目范围说明书。项目经理下一步应该怎么做？<br>A.跟进该相关方以获得批准<br>==B.审查相关方参与计划==<br>C.暂停所有项目活动<br>D.更新批准过程以删除此相关方的要求  </p>
-<p>正确答案：B，你的答案：A回答错误<br>解析：考查干系人参与计划的作用。<br>答案B解析：审查相关方参与计划以寻找方法调动相关方参与度。<br>答案A解析：PMBOK(6)P530-13.4 监督相关方参与。相关方没空批准，并非抵制项目，因此持续跟进批准就好了。 项目经理需要选择合适是冲突管理方式，A最稳妥。  其他选项：因为不是相关方抵制批准，所以审查相关方参与计划意义不大，B不正确。CD都明显不对</p>
-<hr>
-<p><br></br><br>*【错题】<br>6、在项目测试期间，识别到多个缺陷。由于团队还在解决积压的缺陷，测试将会超支的风险现在已经增加。项目经理应该怎么做？<br>A.将该问题上报给项目发起人<br>B.采用冲突管理技术来审查和确定缺陷的优先级<br>==C.提交更变请求来解决缺陷==<br>D.请求额外的资源来处理缺陷积压  </p>
-<p>正确答案：C，你的答案：B回答错误<br>解析：考查变更管理流程。<br>PMBOK11.7.3.2 变更请求。监督风险的输出-变更请求，可以通过提交变更请求来解决缺陷问题。<br>监督风险是在整个项目期间，监督商定的风险应对计划的实施、跟踪已识别风险、识别和分析新风险，以及评估风险管理有效性的过程。==<strong>风险增加需要通过监督风险将风险应对计划实施。监督风险的输出中有变更请求，所以可以依据变更请求来解决问题</strong>==。选项C正确。<br>选项B中的冲突管理技术一般关注于人或资源的冲突。</p>
-<hr>
-<p><br></br><br>*【错题】<br>7、指导委员会已要求在运用敏捷方法方面经验丰富的项目经理提供某中型项目==剩余任务的说明==。项目经理可以使用哪些工具提供此信息？<br>A.业务需求文档分析<br>==B.发布燃尽图==<br>C.剩余用户故事的故事点<br>D.替代指标  </p>
-<p>正确答案：B，你的答案：C回答错误<br>解析：考查敏捷方法相关知识:燃尽图。  </p>
-<hr>
-<p><br></br><br>*【错题】<br>12、项目经理得知，因为未得到足够的支持。一位团队成员无法满足指定的截止日期。原计划由另一个部门的职能经理直接管理的一位人员能支持该团队成员。但因其超负荷无法完成，组织内没有其他资源可用，项目经理应该怎么做？<br>A.联系该超负荷人员的职能经理，并审查资源进度计划<br>B.要求该团队成员与该超负荷人员联系，以解决该问题<br>C.要求该超负荷人员的职能经理解决该问题<br>==D.与团队开会，以解决该问题==  </p>
-<p>正确答案：D，你的答案：A 回答错误<br>解析：考查问题处理方法(最佳：直接面对)。<br>==A中没有资源进度计划这个说法==（有资源管理计划、进度管理计划）；B和C明显又问题，都是让别人去解决问题。<br>选项A一般直接与当事人沟通。<br>（<a href="https://wenku.baidu.com/view/bfb38f41aa8271fe910ef12d2af90242a895abb2.html?_wkts_=1683264983170&amp;bdQuery=%E9%A1%B9%E7%9B%AE%E7%BB%8F%E7%90%86%E5%BE%97%E7%9F%A5,%E5%9B%A0%E4%B8%BA%E6%9C%AA%E5%BE%97%E5%88%B0%E8%B6%B3%E5%A4%9F%E7%9A%84%E6%94%AF%E6%8C%81%E3%80%82%E4%B8%80%E4%BD%8D%E5%9B%A2%E9%98%9F%E6%88%90%E5%91%98%E6%97%A0%E6%B3%95%E6%BB%A1%E8%B6%B3%E6%8C%87%E5%AE%9A%E7%9A%84%E6%88%AA%E6%AD%A2%E6%97%A5%E6%9C%9F%E3%80%82%E5%8E%9F%E8%AE%A1%EF%BC%89">https://wenku.baidu.com/view/bfb38f41aa8271fe910ef12d2af90242a895abb2.html?_wkts_=1683264983170&amp;bdQuery=%E9%A1%B9%E7%9B%AE%E7%BB%8F%E7%90%86%E5%BE%97%E7%9F%A5%2C%E5%9B%A0%E4%B8%BA%E6%9C%AA%E5%BE%97%E5%88%B0%E8%B6%B3%E5%A4%9F%E7%9A%84%E6%94%AF%E6%8C%81%E3%80%82%E4%B8%80%E4%BD%8D%E5%9B%A2%E9%98%9F%E6%88%90%E5%91%98%E6%97%A0%E6%B3%95%E6%BB%A1%E8%B6%B3%E6%8C%87%E5%AE%9A%E7%9A%84%E6%88%AA%E6%AD%A2%E6%97%A5%E6%9C%9F%E3%80%82%E5%8E%9F%E8%AE%A1）</a></p>
-<hr>
-<p><br></br><br>*【错题】<br>13、一个项目的团队成员位于不同国家。由于团队必须审查大量信息。应该采用什么方法进行沟通？<br>==A.内部网站、知识库和经验教训数据库==<br>B.即时通讯和会议<br>C.视频会议和电话会议<br>D.电子邮件、信件和备忘录  </p>
-<p>正确答案：A 你的答案：C 回答错误<br>解析：考查沟通方法。<br>PMBOK10.1.2.5 沟通方法。大量信息，最好用拉式沟通。<br>PMBOK（6）P374-10.1.2.5沟通方法。拉式沟通适用于大量复杂信息或大量信息受众的情况（多公司多名相关方）。其他选项：B、C属于互动沟通，排除；选项D：推式沟通能够保发送，但是不能确保接收的效果。</p>
-<hr>
-<p><br></br><br>*【错题】<br>17、项目经理正在管理一个由跨职能团队执行的软件重新设计项目。该公司正在进行敏捷转型。项目管理办公室发布了更新后的政策和程序，要求当前项目选代开发整合到项目管理方法中。着要确保每次选代交付都考虑质量，项目经理应该怎么做？<br>==A.与相关方以及和项目团队合作，以确保有明确定义的”已经完成”定义(DoD)==<br>B.将测试和验证活动分配给具有功能背景的团队成员<br>C.安排该项目最后一次迭代的所有测试活动，以便整个团队可以关注于同一目标<br>D.分配专门的软件测试人员，以确保在整个项目生命周期中进行测试  </p>
-<p>正确答案：A，你的答案：D回答错误<br>解析：考查敏捷方法相关知识。<br>==DoD定义完成，是在敏捷中对质量的要求的描述==。DoD: Definition Of Done.相当于验收标准。DoD达成，表示质量和价值达成。<br>DoD 完成的定义，它是团队需要满足的所有标准的核对单，只有可交付成果满足该核对单才能视为准备就绪可供 客户使用。若要确保每次迭代交付都考虑质量，首先明确“已完成”。</p>
-<hr>
-<p><br></br><br>*【错题】<br>18、承包商正在根据固定总价合同执行一个翻新项目。在项目期间。承包商进行了多项仍在项目范围内的小变更。此外，一些相关方要求进行变更。项目经理应该怎么做？<br>A.修改合同以纳入这些变更<br>B.将这些超范围变更添加到变更日志<br>C.查阅沟通管理计划<br>==D.查阅变更管理计划==  </p>
-<p>正确答案：D，你的答案：B回答错误<br>解析：考查变更管理相关知识。<br>PMBOK4.6 实施整体变更控制。变更问题，D选项类似于“实施整体变更控制过程”。任何变更都要走变更控制流程。<br>PMBOK(6)P113-4.6实施整体变更控制。变更很多，需要使用变更管理计划来执行。本题考察的是变更管理，排除AC；==B，超范围的变更应该先查阅变更管理计划然后实施整体变更控制流程后再更新到变更日志。==</p>
-<hr>
-<p><br></br><br>【有争议】<br>*【错题】<br>19、某项目正处于执行阶段。该项目的生命周期被定义为预测型，但一项主要的可交付成果将渐进地移交给客户。所指派的资源经验丰富，非常可靠，而且乐于做出项目经理过去在其他项目中每次增量式交付之后所做的决定，项目经理应该做什么？<br>A.告知团队虽然这是一个混合型的环境，但必须仍由项目经理负责做出决定。<br>B.就让资源做出决定一事与产品负责人商量。<br>==C.对团队的决定子以支持，并将决策的职责转移给他们==。<br>D.安排举行指导委员会会议，争取其批准此请求。  </p>
-<p>正确答案：C，你的答案：A回答错误<br>解析：考查混合型生命周期特征。<br>《敏捷实践指南》39页，4.3.1-敏捷团队。这道题目的难度在于读题，==从情景描述来看当前项目属于混合式生命周期==，==即从项目的制约条件视角，项目必须遵循明确的工期、成本要求和范围基线。但是在某项可交付成果上，可以采用频繁交付的方式来推进，这就给了团队自我组织、自我管理的空间==。在自组织团队中，项目经理从最初的带领团队来接触敏捷，到团队可以熟练掌握各种工具技术后的逐渐放手，是一个团队逐渐走向成熟的过程。从团队的绩效表现来看，目前团队的能力已经不需要项目经理事必躬亲，可以放手（而且乐于做出项目经理过去在其他项目中每次增量式交付之后所做的决定）。但是在讨论哪些需求纳入到到范围，以及排列实现需求的优先级顺序，更多的是产品负责人PO的责任，因此团队成员想要拥有更多的决策权力，就需要和PO进行协商，选项B正确。==选项A，混合型环境，可以适度向团队放权，相信团队的群体智慧==。选项C，未考虑到对PO的影响。选项D，指导委员会负责拆解组织战略目标与关键决策，不宜参与微观管理。</p>
-<hr>
-<p><br></br><br>*【错题】<br>21、一家保安公司正在免费为当地的避难所实施门禁控制。营销团队计划通过善意的宣传活动。确保整体覆盖，包括广播和电视广告。并让避难所及其发起人参与，这描述的是哪一项风险应对策略？<br>A.风险分析<br>B.风险增强<br>C.风险接受<br>==D.风险分摊（分享）==  </p>
-<p>正确答案：D，你的答案：B回答错误<br>解析：考查风险应对策略。<br>PMBOK（6）P444-11.5.2.5机会应对策略-分享。分享涉及到将应对机会的责任分享给第三方，使其享有机会所带来的部分收益。==题目中提示让避难所及其发起人参与，暗示将机会分享给第三方==，D正确。其他选项：A风险分析不是风险应对策略。B风险增强/提高策略指的是提高积极风险（也叫机会）发生的概率和发生以后带来的影响。C风险接受指的是承认风险的存在，但是不主动采取措施，而是等发生后再采取应对措施，分为主动接受和被动接受。<br>选项B风险增强，一般指增加资源。</p>
-<hr>
-<p><br></br><br>*【错题】<br>22、公司的一个项目在最后一个迭代结束前在既定的范围、进度计划和预算内成功交付。但在项目的庆祝仪式上，其中一位业务相关方却表示，他认为该项目非常失败。因为它未增加任何商业价值。项目经理本应采取什么措施来避免这种认知？<br>A.确认是否已制定沟通管理计划，使业务相关方认识到项目的成功之处。<br>==B.让业务相关方参加冲刺评审会议==。<br>C.与发起人和关键相关方一起确定产品待办事项列表中的优先要务，以便交付商业利益。<br>D.为关键相关方开展收尾调研。  </p>
-<p>正确答案：B，你的答案：C回答错误<br>解析：考查敏捷相关知识:冲刺评审会议。<br>选项C，==确定产品代办列表的优先级一般由PO负责==。</p>
-<hr>
-<p><br></br><br>*【错题】<br>26、在不稳定时期开发项目时，必须避免预算偏差方面的风险。这应该使用哪一个合同类型？<br>A.总价加经济价格调整合同（FP一EPA)<br>B.工科合同(T&amp;M)<br>C.总价加激励费用合同(FP IF)<br>==D.成本加激励费用合同（CP IF)==  </p>
-<p>正确答案：D，你的答案：B回答错误<br>解析：考查合同类型。<br>不稳定时期，潜台词==需求不明确导致范围不确定，先定位成本补偿类合同==。题干中，避免预算偏差，这是甲方的目标，为了实现目标需要对乙方进行奖励、激励手段。<br>选项C的总价加激励是有天花板价格的。</p>
-<hr>
-<p><br></br><br>*【错题】<br>27、在项目规划期间，项目经理识别到多个风险。为减轻这些风险的影响，项目经理应该怎么做？<br>A.将风险规避视为风险应对策略<br>B.遵循先前项目的风险管理计划<br>C.执行储备分析<br>==D.执行决策树分析并让相关方参与应对措施选择过程==  </p>
-<p>正确答案：D，你的答案：B回答错误<br>解析：考查风险管理知识领域的数据流向。<br>PMBOK（6）P428-11.4风险定量分析。通过量化整体项目风险敞口，评估项目可能要面临的影响。根据评估结果制定应对策略。 选项A：是否采取规避的策略要根据风险评估的结果。 ==选项B：风险管理计划是定量分析的输入，但在这个过程最重要的任务是要对风险进行分析并进行决策，所以选D而不选B==。 选项C：用于监督风险。<br>储备分析。见 7.2.2.6 节。在整个项目执行期间，可能发生某些单个项目风险，对预算和进度应急储备产生正面或负面的影响。储备分析是指在项目的任一时点比较剩余应急储备与剩余风险量，从而确定剩余储备是否仍然合理。可以用各种图形（如燃尽图）来显示应急储备的消耗情况。本题中储备分析不能减轻风险的影响。<br>==决策树分析。用决策树在若干备选行动方案中选择一个最佳方案==。在决策树中，用不同的分支代表不同的决策或事件，即项目的备选路径。每个决策或事件都有相关的成本和单个项目风险（包括威胁和机会）。决策树分支的终点表示沿特定路径发展的最后结果，可以是负面 或正面的结果。 在决策树分析中，通过计算每条分支的预期货币价值，就可以选出最优的路径。</p>
-<hr>
-<p><br></br><br>*【错题】<br>30、项目团队正通过估算每个工作包来制定项目预算，团队使用过往项目的统计值和历史数据。这使用的是什么估算工具或技术？<br>A.储备分析<br>B.类比估算<br>C.专家判断<br>==D.参数估算==  </p>
-<p>正确答案：D，你的答案：B 回答错误<br>解析：考查参数估算技术。<br>PMBOK7.2.2.3 参数估算。参数估算强调统计关系、统计分析。</p>
-<hr>
-<p><br></br><br>【有争议】<br>*【错题】<br>32、项目经理加入一个项目，该项目要在两年内更换现有的IT系统。项目经理下一步应该做？<br>A.与相关方起执行效益分析<br>B.确定商业需求和预期效益<br>C.根据与相关方的讨论执行项目评估<br>==D.制定项目管理计划==  </p>
-<p>正确答案：D，你的答案：A回答错误<br>解析：考查项目管理计划的作用。<br>选项B，PMBOK4.1 先进行商业论证。A强调了==与相关方一起，不合适==。论证项目需求，制定项目章程后才有相关方概念及管理计划。</p>
-<hr>
-<p><br></br><br>*【错题】<br>34、项目经理正在领导的一个项目呈现出超过成本基准的趋势。项目经理应首先做什么来管理预算？<br>A.告知相关方项目完成时会超出预算。<br>B.向项目发起人寻求帮助，使预算重回正轨。<br>==C.与项目团队开会分析实际成本，以确定偏差==。<br>D.提出变更请求（包括分析），以增加预算。  </p>
-<p>正确答案：C，你的答案：D回答错误<br>解析：考查控制成本过程相关内容。<br>《PMBOK》第6版111页，4.5.2.2 数据分析-偏差分析。==“呈现出超过成本基准的趋势”，趋势是否已经体现在当前的绩效测量值上？趋势未来是什么样的走势？是典型的偏离还是非典型的偏离？这些都需要进行分析和研判，所以C正确==。选项A，在未经过评估分析就得出结论且向相关方进行同步，一方面决策无依据，另外还会招致相关方对项目经理能力的质疑。选项B，做决策需要依据，另外在项目执行阶段，项目发起人不宜涉入到项目的微观（具体事务）管理。==选项D，增加预算需要准确的评估数字，所以如果需要通过变更的方式来对绩效进行干预的话，也是排在C选项之后==。</p>
-<hr>
-<p><br></br><br>*【错题】<br>35、高级管理层希望在管理项目相关方的期望时提高项目经理的人际关系技能，应建议哪种培训类型?<br>A.商业头脑<br>B.组织行为<br>==C.冲突解决==<br>D.沟通技能  </p>
-<p>正确答案：C，你的答案：D回答错误<br>解析：考查管理干系人参与过程的工具:人际管理与团队技能(冲突管理)<br>==管理干系人参与时项目经理应确保及时解决冲突。选项 A、B、D 不属于人际关系与团队技能==。知识点：章节 13.3.2.3</p>
-<hr>
-<p><br></br><br>*【错题】<br>38、一个项目的团队成员来自多个具有文化差异的国家。他们一起工作的很好。一天，一个团队成员做了一个令人不快的手势，冒犯了另一名团队成员。另一名团队成员对项目经理报告这个问题。项目经理应该做什么？<br>A.要求两名团队成员努力解决他们之间的误解<br>B.对作出冒犯性手势的团队成员进行纪律处分，并告知其职能经理<br>C.提醒团队成员他们过去的积极关系，并暗示他们忽略这个问题<br>==D.单独与团队成员交谈以指出文化差异，然后进行调解讨论==  </p>
-<p>正确答案：D，你的答案：A回答错误<br>解析：考查冲突解决方法。  </p>
-<hr>
-<p><br></br><br>*【错题】<br>39、一名团队领导不断地错过项目会议，迟到或不愿意参与，项目经理不确定为什么会这样。项目经理应该做什么？<br>A.通过审查角色与职责分析该情况。然后使用相关方映射分析对该团队领导进行分类<br>B.与该团队领导交谈，比较了解他们的问题，重申项目角色与责任，并获得他们的承诺<br>==C.与该团队领导会面，倾听他们的顾虑，记录情况，并更改会议计划以避免冲突==<br>D.遵循正式的治理结果，事查沟通管理计划，并指示该团队领导参加会议  </p>
-<p>正确答案：C，你的答案：B回答错误<br>解析：考查问题解决方法。  </p>
-<hr>
-<p><br></br><br>*【错题】<br>41、风险登记册中记录了一项风险，即根据之前的观察结果，某种材料价格可能会上涨。然而，这材料的价格涨幅超过预期，该项目的成本绩效指数(C PI)为1.05，离完工还有一年时间。项目经理下一步该做什么？<br>==A.重新评估该风险的影响和战略==<br>B.使用该项目的应急储备<br>C.申请批准管理储备<br>D.接受该风险并记录经验教训  </p>
-<p>正确答案：A，你的答案：C回答错误<br>解析：考查监督风险管理过程的工作内容(风险再评估)。<br>解析：PM BOK11.7P453监督风险-序言-跟踪已识别风险。==关键词”超出预期”表明需要风险再评估，更新登记册==。“CPI为1.05”是干扰内容，CPI无论为多少都应当先对风险进行分析，谋定而后动；==使用应急储备需要变更，排除B==，==此风险已识别所以不能用管理储备，排除C==，接受指的是风险发生前所作的事情，风险易发生变成问题不能接受，排除D。<br>已知的未知风险使用应急储备？</p>
-<hr>
-<p><br></br><br>*【错题】<br>42、在准备项目进度计划时，项目经理意识到项目要在八个月内完成。考虑到材料交付可能造成延迟后，项目经理应该怎么做？<br>A.向指导委员会提交变更请求，更新进度计划<br>B.发布进度计划草案以供项目团队审查<br>C.与发起人一起审查项目进度计划<br>==D.使用额外的应急时间来优化进度计划==  </p>
-<p>正确答案：D，你的答案：B回答错误<br>解析：考查制定进度计划过程的工具：储备分析。  </p>
-<hr>
-<p><br></br><br>*【错题】<br>43、项目经理被指派交付某组织旗舰店产品的一个关键解决方案。重要的成功因素包括敏捷性，市场适应能力和对市场上产品/服务的快速响应能力。为了确保公司取得成功，项目经理应该采取的其中一项关键活动是什么？<br>A.与项目发起人一起审查项目目标，以商定更加现实且可实现的项目目标和可交付成果。<br>B.请求项目发起人增被资金，以雇佣额外的技能熟练的资源，并提高项目交付方法和结果的质量。<br>==C.定期审查项目的计划、目标和可交付成果，以确保获取所有相关数据。从而继续进行明智的项目决策==。<br>D.在进行市场观察后创建商业论证，然后将之提交给发起人，以便修改项目可交付成果，从而达到新界定的目标。  </p>
-<p>正确答案：C，你的答案：D回答错误<br>解析：考查监控项目工作过程的工作内容。<br>敏捷有快速响应市场的能力，C 答案，如果能做到==频繁的审查，计划，目标和可交付成果，就有更多的机会去得到市场反馈，验证市场，不断试错==。考点：敏捷的快速响应。</p>
-<hr>
-<p><br></br><br>*【错题】<br>44、在完成项目章程后，项目经理召开了相关方会议。在这次会议期间。项目经理分享了已批准的项目章程，以确保对关键可交付成果、里程碑及相关方角色与职责达成共识。一位相关方没有参加这次会议。项目经理应该做什么？<br>==A.参考有关如何发布项目章程以供缺席相关方审查的沟通管理计划==<br>B.检查相关方登记册，以确定谁可以将项目章程的内容通知缺席的相关方<br>C.,检查相关方参与计划，以确定如何与缺席的相关方分享项目章程<br>D.查看资源管理计划，以获得缺席相关方的电子邮件地址，然后通过电子邮件向他们发送项目章程  </p>
-<p>正确答案：A，你的答案：C回答错误<br>解析：考查沟通管理计划的作用。<br> 一位相关方无法通过会议获取信息，如何把信息发送给他，可以按着沟通管理计划中规定的方法和这位相关方沟通 10.1.3.1 沟通管理计划。</p>
-<hr>
-<p><br></br><br>*【错题】<br>49、在某项目进行期问，一名初级团队成员接治项目经理，寻求风险减轻方面的指导和建议。项目经理该如何应对？<br>A.让该初级团队成员请教开发风险减轻策略的高级团队成员<br>B.告知该初级团队成员风险减轻不属于他们的工作<br>C.提供指导并为该初级团队成员跟进一些开发活动<br>==D.告诉该初级团队成员可从经验教训中找到相关信息==  </p>
-<p>正确答案：D，你的答案：C 回答错误<br>解析：考查组织过程资产的作用。  </p>
-<hr>
-<p><br></br><br>*【错题】<br>51、项目经理正在管理一个在偏远的国际地点运营的项目，当地官员对该项目存在重大分歧，项目经理决定推迟项目的工作。直到解决分歧为止，即使必须延长项目进度计划。项目经理使用的是哪一项威胁策略？<br>A.上报<br>B.规避<br>C.转移<br>==D.接受==  </p>
-<p>正确答案：B，你的答案：D回答错误<br>解析：考查风险应对策略  </p>
-<hr>
-<p><br></br><br>*【错题】<br>52、一家组织已经为政府完成了一个重要项目。所有可交付成果均已提交，但尚未收到正式验收，似乎是由于选举后政府发生变化导致的。该项目不符合新政府的目标，也未被验收。项目经理应该做什么？<br>A.与新政府召开新的需求收集会议。<br>B.与新政府一起审查工作说明书和可交付成果。<br>C.寻求法律顾问搜查新政府解决问题的方案。<br>==D.继续进行正式的收尾程序，同时记录经验教训==。  </p>
-<p>正确答案：D，你的答案：A回答错误<br>解析：考查组织战略计划与项目之间的关系。  </p>
-<hr>
-<p><br></br><br>*【错题】<br>55、项目经理结束了一个重要的组织转型项目，项目发起人通知项目经理，由于信息是保密的，所有项目文件应直接交付给他们，而不是上传到项目知识经验库。项目经理下一步应该做什么？<br>A.将文件交给发起人，并删除所有项目记录。<br>==B.建议给予访问控制的程序，以提供受限访问==。<br>C.将发起人的请求告知审计团队。<br>D.按照原始流程发布文件。  </p>
-<p>正确答案：B，你的答案：C回答错误<br>解析：考查对敏感信息的处理。<br>在收尾阶段，需要进行各类文件的归档。文件是需要按流程归档的，既然信息需要保密，那么设置访问受限即可。<br> A可以直接排除，所有项目纪录包括各种经验教训不可能删除掉。在这个情况下B合适，==信息的归档和存储要考虑保密性要求，这也符合规划沟通中关于保密性要求的考虑==。</p>
-<hr>
-<p><br></br><br>*【错题】<br>56、在起草项目章程时项目经理意识到有两个关键相关方的项目利益存在冲突，若要确保项目章程得到批准。项目经理应该做什么？<br>==A.请求发起人决定哪个相关方的利益最符合项目方向==。<br>B.要求管理层从项目中去除其中一个相关方。<br>C.关注这些相关方的共同利益。<br>D.确定哪个相关方的利益对项目更有利。  </p>
-<p>正确答案：A，你的答案：C回答错误<br>解析：考查发起人的职责。<br>==题目要确保章程获得批准，而项目章程由发起人签发==，题目只有A是与发起人密切相关。</p>
-<hr>
-<p><br></br><br>*【错题】<br>57、一家公司正在多个国家集成一款新的软件组件，在测试期间，可能会检测到问题。若要考虑这些潜在问题的影响，项目经理应该做什么？<br>A.协商延迟部署进度计划<br>==B.组织定期团队会议以管理风险应对描施==<br>C.查看与供应商签定的合同，以评估延迟的影响<br>D.添加更多资源以确保满足进度计划  </p>
-<p>正确答案：B，你的答案：D回答错误<br>解析：考查风险管理知识领域各子过程先后顺序。<br>==现在已经识别出来一个风险，接下来应该定性风险分析 P426页定性风险分析的工具和技术，会议（风险研讨会），审查已识别风险，评估概率和影响，对风险进行分类和优先级排序==。</p>
-<hr>
-<p><br></br><br>*【错题】<br>63、一个项目已经执行了两个多月，出乎意料的是项目经理收到一封来自高级管理层的电子邮件，邮件指出项目发起人正在请求更新项目开工会议的日期。项目经理未能执行哪项活动？<br>A.为项目管理计划制定基准。<br>B.完成相关方参与计划。<br>C.批准变更管理计划。<br>==D.最终确定进度管理计划==。   </p>
-<p>正确答案：D，你的答案：B回答错误<br>解析：考查进度管理计划的作用。  </p>
-<hr>
-<p><br></br><br>【有争议】<br>*【错题】<br>64、一个施工项目挖掘期间发现了历史文物，项目经理通知户和当地文物部门，由于文物部门收集这些文物所需时间，该项目推迟了。项目经理应该做什么？<br>A.变更进度计划，以包容延期。<br>==B.通知管理层，并提交一份紧急变更请求==。<br>C.更新并分发相关方参与计划。<br>D.修订资源管理计划，并通知团队。  </p>
-<p>正确答案：B，你的答案：A回答错误<br>解析：考查变更管理流程。<br>答案A解析：C和D直接排除。情景中涉及到文物保护的法律法规相关条款。这样的变更是受法律影响的不需要走变更控制流程所以B也可以排除，B如果改成通知管理层项目将要因此产生延期是可以的，但不是走变更流程，后半句不对，A做法是回避风险的具体做法。</p>
-<hr>
-<p><br></br><br>*【错题】<br>65、发起人支持运用敏捷方法。项目经理正在考虑如何推出敏捷方法并争取项目团队成员和相关方的认同。项目经理首先应该做什么？<br>A.确定如何运用敏捷技术(包括组织培训和沟通)进行组织变革。<br>B.选择当前的一个预测型项目，定义方法，并提高敏捷培训，以便执行项目的剩余部分。<br>==C.先从一个复杂性适当的试点项目开始，并向受影响的人员提供敏捷培训==。<br>D.确定将需要哪些敏捷教件工具，来支持组织中的敏捷交付。  </p>
-<p>正确答案：C，你的答案：A回答错误<br>解析：考查敏捷方法相关知识点。  </p>
-<hr>
-<p><br></br><br>*【错题】<br>68、一位项目经理正在管理一个处于==启动阶段==的网络项目，该项目经理注意到政府网络安全主任最近发布的一部数据保护条例。项目经理该做什么?<br>A.纳入这一变更，将之视为相关方需求的一个变更。<br>B.对项目做出调整，将组织治理与项目治理联系起来。<br>C.告如网络安全主任，这属于范围蔓延，将在下一阶段予以考虑。<br>==D.告如网络安全主任，该变更将会被视为一项交更请求==。  </p>
-<p>正确答案：D，你的答案：A回答错误<br>解析：考查变更管理流程步骤。<br>启动阶段不等于没有变更，启动阶段不等于启动过程组，每个阶段都有5大过程组、10大知识领域、49个管理过程。选项A，变更直接纳入比较草率。</p>
-<hr>
-<p><br></br><br>*【错题】<br>72、在风险登记册中记录的一个项目风险是特定机器组件的潜在故障，发生该故障的概率很低，因此没有包含备用组件的预算。项目经理应该怎么做?<br>A.寻找可以降低风险但延长进度计划的内部机械代替。<br>==B.定期监控风险概率，以确保其不会发生显著变化==.<br>C.建立应急储备以避免任何后续预算问题。<br>D.由于概率很低，从风险登记册中删除该项。  </p>
-<p>正确答案：B，你的答案：C回答错误<br>解析：考查监督风险过程的工作内容。<br>考点是低概率风险。低概率风险，应该纳入到观察清单，以供未来监控。<br>==对于概率很低影响很小的风险我们通常记录在低优先集风险清单上，在这个清单上的风险我们通常只需要定期监督它们没有没有发生什么变化，如果没有发生变化则不需要其它行动==。见11.5.1.2节描述“而==针对低优先级的威胁和机会，可能只需要把它们列入风险登记册的观察清单部分，或者只需要为之增加应急储备，而不必采取主动的管理措施==。”</p>
-<hr>
-<p><br></br><br>*【错题】<br>73、一个高知名度项目的项目经理收到一个关键干系人对某个主要可交付成果的抵制，为了避免出现进度延迟风险。项目经理安排一次团队会议讨论方案并获得反馈意见。项目经理使用的是哪种冲突解决技术？<br>A.撤退/目避<br>B.缓和/包容<br>C.妥协/调解<br>==D.合作/解决问题==  </p>
-<p>正确答案：D，你的答案：B回答错误<br>解析：考查冲突解决方法。<br>冲突解决的技巧，坐下来考虑各方意见，面对面解决问题。</p>
-<hr>
-<p><br></br><br>*【错题】<br>76、一位曾在敏捷环境中工作过的新团队成员让项目团队的一些成员感到沮丧。这位新团队成员每天都会接近团队成员，试图参加每日站立会。项目经理应该做什么？<br>==A.就项目团队正在使用的方法，为该新团队成员提供辅导==。<br>B.安排会议，让项目团队查阅沟通管理计划。<br>C.向项目团队成员发送电子邮件，概述沟通策略。<br>D.让项目团队其他成员继续与该新团队成员开展讨论。  </p>
-<p>正确答案：A，你的答案：B回答错误<br>解析：考查敏捷方法相关知识点。<br>《敏捷实践指南》35页，4.2.1.2-==仆人式领导消除组织障碍。这名团队成员虽然在努力地加入敏捷团队的沟通，但是他的行为已经干扰到了团队的运行，形成了障碍。若想解决此障碍，就需要针对团队成员的短板进行有针对性的培训，例如辅导团队成员使用信息发射源来获取信息，而不是无时无刻的询问==，选项A正确。选项B，==出现问题的是单一成员，另外在敏捷实践过程中，如无必要，不会形成书面的沟通管理计划==。选项C，同B，另外在敏捷实践中，能够通过面对面的沟通可以解决的问题，就不要拉长反馈的环路。选项D，本已避之不及，怎么可能鼓励团队成员迎难而上。</p>
-<hr>
-<p><br></br><br>【有争议】<br>*【错题】<br>78、一家公司有两个正在进行的项目来增强一个在线门户网站，项目A与后端系统集成。而项目B提供业务关键功能，项目B的完成取决于项目A，但项目A存在一些问题。若要处理这些问题，项目经理应该做什么？<br>A.创建一份因果图<br>B.分配一位质量管理专家<br>==C.生成一份亲和图==<br>D.生成一份散点图  </p>
-<p>正确答案：C，你的答案：A回答错误<br>解析：考查问题处理使用的方法。<br>A有助于找到造成问题的根本原因，然后针对性提出解决方案</p>
-<hr>
-<p><br></br><br>*【错题】<br>84、由于两个重要的相关方A和B之间冲突而未能合作，项目因此被推迟。相关方参与计划规定项目经理可能不会与这些相关方中的任何一个进行直接交互，这使得调解员的角色都给了公司的CIO，但是，项目经理确实与相关方A具有非正式的个人关系。在接待期向相关方A表示他们希望实施附加功能。但这些功能不会对项目产生负面影响。项目经理下一步要做什么？<br>A.与CIO开会以解释该功能，并要求他们寻求相关方B对实施该功能的同意。<br>B.了解该附加功能及其影响。<br>C.遵循相关方参与计划，并告知CIO相关方A希望实施附加功能。<br>==D.遵循变更管理程序来实施该功能==。  </p>
-<p>正确答案：D，你的答案：C回答错误<br>解析：考查变更管理流程。  </p>
-<hr>
-<p><br></br><br>*【错题】<br>88、项目经理正在领导一个项目，该项目的几位相关方来自公司其他职能部门，其中一位相关方刚刚晋升为另一个职能部门的负责人，该部门也是该项目的一个相关方。项目经理应该让项目团队更新哪项内容来==确保与相关方保持适当沟通==？<br>A.项目管理计划<br>==B.沟通管理计划==<br>C.相关方参与计划<br>D.相关方登记册  </p>
-<p>正确答案：B，你的答案：D回答错误<br>解析：考查沟通管理计划的作用。  </p>
-<hr>
-<p><br></br><br>*【错题】<br>91、某项目正在实施一个新系统，项目经理已确定，最好使用Scrum和看板方法的组合完成该项目。产品负责人对如何开始交付所要求的功能非常困感。项目经理应该如何帮助产品负责人？<br>A.创建一个工作分解结构，并向产品负责人说明可交付成果。<br>==B.就如何创建产品待办事项列表向产品负责人提供指导==。<br>C.鼓励团队细化项目任务。<br>D.讨论产品负责人在项目团队内的职责。  </p>
-<p>正确答案：B，你的答案：D回答错误<br>解析：考查敏捷环境下产品负责人的职责。<br>据题干描述，==使用 Scrum 和看板方法的组合以及问项目经理应该如何帮助产品负责人，也就意味着本题考查的是敏捷的相关内容。产品负责人对如何开始交付所要求的功能非常困惑，<strong>产品负责人，作为开发团队和客户之间的纽带，职责就是要帮助项目梳理好项目中的待办项（也就是所要求的功能）</strong>==。如果他对这个产生困惑，说明他没有很好做好他分内的工作。此时，作为项目经理，或者说敏捷主管，需要做得是帮助产品负责人解决他的困扰。 综上所述，本题应该选择B选项。 本题对应新版大纲： 领域1：人 任务4：授权团队成员和相关方 • 支持团队的任务职责。<br>知识点出处：4.3.2 敏捷的角色《敏捷实践指南》第41页 题目指出==产品负责人对如何开始交付所需的功能感到困惑，说明产品负责人对该产品用户需求的内容或是优先级不明确，可以编制产品代表事项列表把用户需求通过用户故事来明确，并显示预期的可交付成果的序列，以便确定如何交付所需的功能==。项目经理可以通过指导PO来创建产品待办事项列表来实现这一过程，因此正确答案是选项B。 选项A，从题意中，产品负责人不一定不知道自己的责任，只是不知道如何操作。 选项C ，不符合敏捷项目经理的职责定位； 选项D， ==产品待办事项是PO的职责，不是团队的职责==；</p>
-<hr>
-<p><br></br><br>【有争议】<br>*【错题】<br>92、项目经理对项目有一个想法，即提高组织跨职能流程的效率。该项目将需要两名团队成员和一小部分职能领域的预算。项目经理下一步应该做什么？<br>A.分配资源并启动项目<br>B.识别项目发起人<br>==C.编写项目章程==<br>D.制定项目管理计划  </p>
-<p>正确答案：C，你的答案：B回答错误<br>解析：考查项目章程的作用。<br>选项B解析： 组织的项目需要一个项目之外的发起人为项目提供资源和支持。首先要找到发起人项目才可能被批准。</p>
-<hr>
-<p><br></br><br>*【错题】<br>96、一个大型而复杂的IT项目正处于其执行阶段。由于预算问题该组织将开发外包给一个海外团队，项目经理得知该海外团队负责人正在直接向客户发送任务进度更新。项目经理首先应该做什么？<br>==A.与该海外团队负责人和客户开会，就新的沟通管理计划达成一致意见==<br>B.将批准的沟通管理计划发送给该海外团队负责人<br>C.向该海外团队负责人解释相关方参与计划<br>D.将该问题升级上报给海外管理团队解决  </p>
-<p>正确答案：A，你的答案：B回答错误<br>解析：考查沟通管理计划的作用。  </p>
-<hr>
-<p><br></br><br>*【错题】<br>102、项目团队正在努力满足产品开发的截止时间，项目发起人指示团队省略质量检查以满足此截止时间。项目经理应该怎么做？<br>A.更新项目进度计划，并要求变更控制委员会删除质量检查<br>B.要求团队加班，并取消质量检查以快速跟进该项目<br>C.使用管理储备来纠正和快速跟进检查期间的质量问题<br>==D.告知发起人，取消计划的质量检查可能会导致风险增加==  </p>
-<p>正确答案：D，你的答案：C回答错误<br>解析：考查质量控制过程的作用。<br>==质量检查是质量控制的工具和技术。如果取消质量检查工作，可能导致已经发生的质量问题被交付到客户手中，这将导致外部非一致损失成本，和检查（质量一致性成本）所付出的代价来比，外部损失成本会大的多，这样会导致风险增加==。<br>开展质量活动需遵循质量管理计划。</p>
-<hr>
-<p><br></br><br>*【错题】<br>105、一位主题专家通知职能经理项目落后于进度计划，经过调查，项目经理发现该主题专家说的不是该项目，而是与该项目无关的个人工作。项目经理首先应该做什么？<br>==A.与该主题专家和职能经理会面，以确保项目沟通遵循沟通管理计划==。<br>B.让职能经理参考最新状态报告，并指示该主题专家不要沟通此类型问题。<br>C.将该问题上报给发起人，并使用沟通管理计划为该主题专家提供支持。<br>D.让该主题专家参考最新状态报告，并指示职能经理不要分享此类情息。  </p>
-<p>正确答案：A，你的答案：D回答错误<br>解析：考查沟通管理计划的作用。<br>==沟通管理计划中包括了需要沟通的信息，包括了对语文、形式、内容和详细程度的要求==，按沟通管理计划进行沟通不会出现情景中的问题。P377页<br>题目出现沟通内容与项目无关，即沟通内容与沟通管理计划不符。</p>
-<hr>
-<p><br></br><br>【有争议】<br>*【错题】<br>111、在一个开发工具的项目结束时，一位相关方对所花费的时间、精力和金钱提出质疑。项目经理组织与所有相关方举行会议，接着发生几次争论。若要防止这种沟通失败，项目经理应该事先使用什么项目文件?<br>A.项目进度计划<br>B.批准的预算<br>==C.项目管理计划==<br>D.效益分析  </p>
-<p>正确答案：C，你的答案：D回答错误<br>解析：考查项目管理计划的作用。<br>答案D解析：效益分析是项目启动之初就要做的工作，以保证项目是有经济效益的，也就是值得投入资源去做的。这就可以回答相关方对于项目所花时间金钱的质疑。</p>
-<hr>
-<p><br></br><br>【有争议】<br>*【错题】<br>116、在一个多阶段项目的第二阶段遇到必须立即解决的问题。项目经理应该怎么做？<br>A.与高管开会，请求提供更多时间来应用变更控制程序<br>B.确定纠正措施，了解进度和成本影响并应用实施整体变更控制过程<br>==C.快速调动专家，在规定的时间内解决问题，并更新问题日志、变更日志和进度计划==<br>D.回到第二阶段的交付，更新进度计划，并通知相关方  </p>
-<p>正确答案：C，你的答案：B回答错误　<br>解析：考查问题解决方法(最佳：直接面对)。<br>答案B解析：针对问题，确定纠正措施，将纠正措施作为变更请求实施整体变更控制过程。其他选项均为可能的纠正措施，B为最合适答案。<br>==需要立即解决的问题，无论是纠正措施、缺陷补救、预防措施，都属于变更，按变更流程走都正确==。C选项太混乱。立即解决,不代表不估计后果,因此还是要进行分析并走变更控制流程。</p>
-<hr>
-<p><br></br><br>*【错题】<br>117、在项目执行阶段提出进行重要变更的请求，遵循并记录了变更控制程序。项目的一些关键团队成员对这些变更控制不安，因为他们将会影响可交付成果。若要确保实施这些变更，项目经理应该做什么?<br>==A.通知这些关键团队成员遵守变更管理计划==<br>B.要求这些关键团队成员与其他团队成员一起审查范围变更<br>C.建议这些关键团队成员中查项目管理计划中的程序<br>D.要求这些关键团队成员的职能经理帮助他们更好的了解这些变更  </p>
-<p>正确答案：A，你的答案：B回答错误<br>解析：考查变更管理计划的作用。<br>==<strong>变更只要按流程按计划处理，即使会影响可交付成果也是没有问题的</strong>。遵守计划则变更被批准后更新了计划、基准和文件，通知了相关方就应该实施变更==。</p>
-<hr>
-<p><br></br><br>【有争议】<br>*【错题】<br>119、一家在竞争激烈的商业环境中运营的公司委托一个项目团队来提高其可扩展性，若要确保项目成功，项目经理应该做什么？<br>A.创建项目章程<br>B.组建项目团队<br>C.执行项目评估<br>==D.制定项目管理计划==</p>
-<p>正确答案：D，你的答案：A回答错误<br>解析：考查项目管理计划的作用。<br>答案A解析：要做好项目必须先立项，A是立项成功的标志，在这个过程中的很多内容对项目成功非常重要。</p>
-<hr>
-<p><br></br><br>*【错题】<br>121、为了开展一个敏捷项目，将一个客户设计成矩阵型组织，项目经理正在现场与来自该组织不同部门的关键相关方一同开展工作。项目经理应该如何应对不同的相关方？<br>A.项目经理正在客户的营业场所开展工作，因此他/她遵循所有关键相关方的指示。<br>B.这是一个敏捷项目，因此仅听从项目经理的主管和该组织职能部门经理的指示。<br>==C.由于观点各异，因此要进行相关方分析并根据结果行事==。<br>D.所有相关方都很重要，因此项目经理应该遵循管理层和关键相关方的指示。  </p>
-<p>正确答案：C，你的答案：D回答错误<br>解析：考查识别干系人过程的工具:干系人分析。<br>《PMBOK》第6版507页，13.1-识别相关方。既然是==与众多相关方进行协作，就需要展开对相关方的分析，并根据对相关方分析的结果来制定适当的参与策略，因此选项C正确==。对相关方管理是项目经理的责任，根据某些相关方的指示来设计相关方的参与策略，会出现疏漏，排除ABD。</p>
-<hr>
-<p><br></br><br>*【错题】<br>123、在与产品负责人交流后，一位项目团队开发人员为当前迭代添加了一项关键功能，以确保新的销售。该团队已经开始开发该功能，项目经理下一步应该怎么做？<br>A.指示项目团队停止开发该功能<br>==B.建议开发团队与产品负责人协商后共同决定==<br>C.如果不影响当前正在进行的任何其他功能的交付，指导团队完成该功能的开发<br>D.将该问题升级上报给人力资源部门，以确保产品负责人将来不会怪罪  </p>
-<p>正确答案：B，你的答案：C回答错误<br>解析：考查敏捷环境下的项目经理的职责<br>题目当中出现了产品负责人的角色，这道题目考察的是敏捷的知识点，==在敏捷当中项目经理这个角色权利相当于是弱矩阵下的项目经理，<strong>团队内需求的最终解释权是由产品负责人（PO）来负责</strong>==。==此题当中，<strong>该功能是项目团队开发人员在与产品负责人交谈后添加的，意味着PO是同意。那么对于团队成员来说，应该承诺可以完成</strong>，项目经理应该协助成员可以顺利完成任务==。C选项中在不影响其他任务的前提下是不合适的，敏捷中追求价值最大化，其他任务如果没有这个任务有价值就可以往后放，当然这个优先级由PO来决定，A和D都不符合敏捷的原则，所以明显错误。</p>
-<hr>
-<p><br></br><br>*【错题】<br>132、项目经理了解到，项目发起人对项目需求的开发工作不满意。为了使项目重新达到发起人的期望项目经理该做什么？<br>==A.进行相关方评估==。<br>B.与团队一起查看项目目标图<br>C.确认团队应该使用哪些模板。<br>D.审阅风险管理计划。  </p>
-<p>正确答案：A，你的答案：B回答错误<br>解析：考查规划干系人参与过程的工具:干系人参与度评估矩阵。<br>《PMBOK》第6版523页，13.3-管理相关方参与。非常不错的情景描述，言简意赅的点出了相关方管理的难点-“期望”。这是我们在日常工作中经常遇到的问题，==<strong>某位相关方对项目有着诸多不满，如果只针对他所提及的这些不满进行修正后，并不能让相关方满意</strong>，甚至情绪变的更为恶劣。为什么会出现这种情况？<strong>因为没有理解相关方的期望什么</strong>，受制于族群习惯、文化意识、沟通能力，相关方的期望并不能做到清晰无误的表达，<strong>所以若要想能够对相关方的期望进行有效管理，就需要对相关方进行分析挖掘</strong>，选项A正确==。选项BC，这就是只从相关方表达出的不满上去猜测导致问题的原因，而没有从期望挖掘入手。选项D，相关方表达出了不满，这已经是个问题，即使在问题解决后，将其重复出现的可能性视为风险管理，更新的也应该是风险登记册，而不是风险管理计划。</p>
-<hr>
-<p><br></br><br>*【错题】<br>133、项目开工会议的召开已计划好了，项目经理希望避免在验收过程中再次经历过去与此客户的误解和延误。项目经理应该在这次会议上提交什么？<br>A.风险管理计划、变更管理计划和组织过程资产<br>B.工作绩效数据、变更管理计划和工作分解结构<br>C.质量指标、责任分配矩阵和里程碑清单<br>==D.范围管理计划、质量管理计划和需求跟踪矩阵==  </p>
-<p>正确答案：D，你的答案：C回答错误<br>解析：考查开工会议相关知识。<br>开工会议是制定项目管理计划的工具和技术P86页，项目开工会议通常意味着规划阶段结束和执行阶段开始，旨在传达项目目标、获得团队对项目的承诺，以及阐明每个相关方的角色和职责。对于多阶段项目，通常在每个阶段开始时都要 举行一次开工会议。B选项中的工作绩效数据和C里的RAM一个是执行过程组的输出，一个是工具技术和开工会没什么关系。A中间的组织过程资产也不属于计划类，我们在开工会上不讨论和分享经验。D都和规划有关且都有验收有关。</p>
-<hr>
-<p><br></br><br>*【错题】<br>139、在项目启动期间，项目经理为一个项目整合分布在全球的团队协作，该项目的成功取决于项目成员之间的合作和团队协作。若要确保这些多元文化团队的成功，项目经理应该做什么？<br>A.制订一份考虑文化差异和团队建设的沟通管理计划<br>B.创建一份风险管理计划，确认与多语种团队协作的风险<br>==C.制定一份考虑文化差异和团队建设的资源管理计划==<br>D.制定相关方参与计划，以分析团队成员的需求和文化差异  </p>
-<p>正确答案：C，你的答案：A回答错误<br>解析：考查团队章程的作用。<br>资源的题目，参考9.4团队建设。==团队建设的输入有资源管理计划==。</p>
-<hr>
-<p><br></br><br>【有争议】<br>*【错题】<br>140、一家公司正在几个国家部署一个新的解决方案，已包含安全审计作为每次部署后的质量检查。第一次部署后进行的安全审计结果发现了违反安全的行为以及不合规问题。第二次部署后的安全审计结果发现了同样的问题，若要避免这个问题，项目经理应该事先做什么？<br>==A.审查质量管理计划，以验证是否包含安全要求==<br>B.与安全审计员协商降低已发现问题的重要性<br>C.验证质量要求与解决方案是否一致，并更新质管理计划<br>D.在第一次审计后制定一份行动计划，以确保问题不再发生  </p>
-<p>正确答案：A，你的答案：D回答错误<br>解析：考查质量管理计划的作用<br>答案D解析：A：已经发现了违反安全的不合规，说明质量管理计划有相关要求。B：协商降低问题的严重性不符合职业道德。C：首先要制定解决方案，而不是验证方案。</p>
-<p><br></br><br>【有争议】<br>*【错题】<br>141、在某运营职能部门的一个项目执行期间，项目经理遇到范围变更和关键任务交付延误的问题，项目经理该如何应对这种情况？<br>A.提出变更请求，以修改范围并调整时间表。<br>==B.召集团队会议，以决定是否应该做出这些变更==。<br>C.在每周项目报告中，将这些顾虑告知项目管理办公室。<br>D.进行影响分析，并将成果提交给指导委员会，以待其审批。  </p>
-<p>正确答案：B，你的答案：D回答错误<br>解析：考查变更管理流程。<br>答案A解析：《PMBOK》第6版113页，4.6-实施整体变更控制。情景中涉及到两个变更请求，==第一个变更请求，范围变更，<strong>第二个变更请求，关键任务交付延误，需要对项目绩效进行纠正</strong>==，有可能还涉及到缺陷补救（不被认可）。这两个需求都需要通过整体变更控制流程来进行响应，因此A选项正确。选项B，==针对范围变更，由于不清楚变更是否有必要，可以召集团队成员进行讨论，避免不必要的变更请求进入到后续的评估过程，增加额外的评估成本。<strong>而针对绩效的纠正措施，以及针对满足交付条件的缺陷补救，就不需要去讨论变更的必要性了，而应该讨论的是解决这些问题的备选方案</strong>==。选B的同学已经掌握了整体变更控制流程，但是在如何实施上还需要注意以下细节。选项C，PMO提供支持来提升项目成功的几率，但是如何应对变更，是项目经理和团队的责任。==选项D，不要弄混变更控制委员（CCB）和指导委员会，指导委员会通常来说是与项目发起人平级的一个部门，它负责拆解组织战略来协助选定项目目标，同时兼具对项目的审批作用，例如批准项目章程==。</p>
-<hr>
-<p><br></br><br>*【错题】<br>143、承包商完成了一个大型项目的工作，项目经理结束了该项目。承包商延迟提交发票且被财务部门拒绝了该发票，并注释”项目采购订单已关闭”。若要避免这种情况，项目经理事先应该做什么？<br>A.要求承包商在项目开始时提交发票<br>B.允许授权对延迟的发票付款<br>C.确保承包方了解发票提交时间表<br>==D.与相关方一起审查正式的财务里程碑，作为项目收尾的一部分==  </p>
-<p>正确答案：D，你的答案：C回答错误<br>解析：考查结束项目或阶段过程的工作内容。<br> A错的离谱还没有做哪来的发票，B不能事先预防，题目问的是事先做什么，C如何确保？这不是解决方案 D项目或阶段收尾的输入项，P124页，里程碑清单</p>
-<hr>
-<p><br></br><br>*【错题】<br>151、一家组织有一个大型项目管理办公室，最近聘请了一名新的项目经理。在最初的几个月内，新项目经理不断错过最后期限。应该给新项目经理提供什么提醒？<br>==A.在问题日志中记录所有项目问题，并持续监控这些问题==<br>B.更经常的与项目团队开会，以确保满足最后期限<br>C.修订项目进度计划，为项目可交付成果提供更多的准备时间<br>D.经常与项目发起人开会，以讨论项目问题  </p>
-<p>正确答案：A，你的答案：C回答错误<br>解析：考查问题处理相关内容。  </p>
-<hr>
-<p><br></br><br>*【错题】<br>155、一位关键的项目相关方在一个复杂的敏捷项目开始时就表现出兴趣，但是随着冲刺的推进，由于需要承担额外的职责，该关键相关方参与度下降，几个冲刺过后，该关键相关方拒绝了一项功能方面的可交付成果。下个冲刺期间，团队需要对被拒绝的可交付成果进行返工，项目经理本来应该采取什么措施来避免发生这种情况?<br>A.记录项目愿景和目标<br>==B.分析相关方属性中的变化==<br>C.让关键相关方参与决策过程<br>D.根据相关方的需要对相关方沟通进行定制  </p>
-<p>正确答案：B，你的答案：D回答错误<br>解析：考查监督干系人参与过程工具:干系人分析。</p>
-<hr>
-<p><br></br><br>*【错题】<br>160、一个项目正在一个过程，可交付成果的一部分是完整的，但下一部分取决于设备的安装才能继续。供应商表示虽然项目经理根据计划已准备好交付该设备，但他们无法找到将其运输到现场的方法。若要避免这个问题，项目经理应该事先做什么？<br>A.创建具有缓冲时间的交付进度计划<br>B.执行自制或外购计划<br>C.完成详细的采购管理计划<br>==D.制定更为详细的风险管理计划==  </p>
-<p>正确答案：D，你的答案：C回答错误<br>解析：考查风险管理的重要性。  </p>
-<hr>
-<p><br></br><br>*【错题】<br>163、在项目收尾阶段，项目经理注意到其中一项可交付成果尚未得到批准，项目经理该怎么做？<br>A.将该问题升级上报给高级管理层并获得最终项目批准<br>==B.确定可交付成果未被批准的原因，并将其记录在问题日志中==<br>C.提交变更请求以延长项目结束日期和最终项目批准<br>D.与分配给该可交付成果的授权相关方会面并获得他们的批准  </p>
-<p>正确答案：B，你的答案：D回答错误<br>解析：考查问题处理流程。  </p>
-<hr>
-<p><br></br><br><em>【错题】<br>164、在项目执行阶段，某些活动会延迟，因为供应商未能按时交货，这种情况之前在项目早期阶段发生过，若要避免再次发生这个问题，项目经理应该事先做什么？<br>A.在首次发生该问题时调用合同的供应商处罚条款<br>B.在采购管理计划中定义产品交付日期<br>==C.进行因果分析以执行*<em>纠正措施</em></em>==<br>D.将该问题包含在变更管理计划中，并定期监控该问题  </p>
-<p>正确答案：C，你的答案：A回答错误<br>解析：考查组织过程资产(经验教训)的作用。  </p>
-<hr>
-<p><br></br><br>*【错题】<br>169、一家公司正在考虑新生产机器的方案，指派一位项目经理来评估商业论证。运营主管提倡选择一款年产量最高的机器，财务主管估算一款产量较低的机器每单位成本较低，而工程主管支持采购一款采用最新技术的机器。项目经理应该做什么？<br>==A.评估每个方案与公司战略的一致性==<br>B.根据质量标准确认机器的产量合格性<br>C.与项目团队进行头脑风暴以确定最佳方案<br>D.根据年度生产计划验证机器的额定产量  </p>
-<p>正确答案：A，你的答案：C回答错误<br>解析：考查==组织战略与项目之间的关系==。  </p>
-<hr>
-<p><br></br><br>【多选】<br>*【错题】<br>171、某敏捷项目正处于16个迭代中的第8个迭代。上一次迭代审查会议结束后，团队成员收到安全部门的反馈，该反馈指出了项目必须遵守的法规。项目经理应采用哪两种措施？(选择两项)<br>==A.向安全部门询问相关法规的详细信息==。<br>B.让产品负责人将需求的入产品未完项。<br>==C.让团队成员分析纳入相关法规的影响==。<br>D.向相关方询问相关法规的优先级。<br>E.让团队成员将需求纳入下一个选代。  </p>
-<p>正确答案：A,C，你的答案：C,D回答错误<br>解析：考查敏捷相关知识：敏捷强调的是==快速响应，应<strong>及时了解信息</strong>，并<strong>做出评估分析</strong>==。</p>
-<hr>
-<p><br></br><br>【多选】<br>*【错题】<br>173、某为期多年的大型项目需要高技能员工才能成功部署。管理团队和项目发起人分析了资源需求，并同意为项目雇佣长期职工，以避免潜在的预算超支问题。但在项目开展过程中存在员工流动的风险，这对交付产生影响。项目经理应采取哪两种措施来减轻这种风险？(选择两项)<br>==A.引入一个奖励计划，对<strong>资源绩效</strong>进行激励和奖赏==。<br>B.通过培训辅导和指导推动项目团队提高能力。<br>==C.增加训练有素的员工，以便培养后备资源==。<br>D.说服高层管理人员雇佣第三方员工。<br>E.与管理层开会讨论将项目分解成较小的项目。  </p>
-<p>正确答案：A,C，你的答案：B,C回答错误<br>解析：：考查风险减轻策略  </p>
-<hr>
-<p><br></br><br>【多选】<br>*【错题】<br>175、项目经理观察到，两名团队成员在各种会议上一直公开地争论不休，为了推销自己的想法，他们分别直接与发起人单独沟通，并做出决定，从未知会项目经理和其他团队成员。项目经理应采取哪两种措施？（选择两项)<br>==A.在下一次会议上重申基本规则，确保所有团队成员都清楚这些规则==。<br>B.让团队成员自行解决问题。<br>==C.解决每名团队成员的行为问题==。<br>D.直接与他们的经理讨论这种行为，并请求他们纠正这种行为。<br>E.与其他项目经理讨论这一情况，并请求他们提供建议。  </p>
-<p>正确答案：A,C，你的答案：A,D回答错误<br>解析：考查管理团队过程相关知识。  </p>
-<hr>
-<p><br></br><br>【多选】<br>*【错题】<br>176、由于时间方面的制的因素，项目发起人通常会让项目经理免去项目回顾会议。但项目经理会通过减少准备和讨论的时间，坚持保留这一重要会议。项目经理的这些措施可能会导致的两个问题是什么？(选择两项)<br>==A.参加研讨会的团队缺乏方向和积极性==<br>B.聚焦于负面情况，对进一步的改进不感兴趣<br>==C.进行的很多讨论要么无果而终，要么可能会形成太多结果==<br>D.其他团队的经验教训不会被纳入考虑范围<br>E.回顾研讨会的时间管理计划不会得到更新  </p>
-<p>正确答案：A,C，你的答案：A,D 回答错误<br>解析：考查会议管理相关知识点(高效会议)。  </p>
-<hr>
-<p><br></br><br>【多选】<br>*【错题】<br>179、某公司一直在对其当前的业务模式实施变革,该变革需要借助多个敏捷团队实施一个复杂的项目。项目经理应让测试团队将以下哪三个方案作为测试机制？(选择三项)<br>==A.涵盖所有可能选择项的实验性方法==。<br>==B.基于行为和测试驱动开发的测试==<br>C.独立的个人测试<br>==D.故事测试==<br>E.安全性和性能测试  </p>
-<p>正确答案：A,B,D，你的答案：B,D,E回答错误<br>解析：考查敏捷环境下的测试机制。  </p>
-<hr>
-<p><br></br><br>【多选】<br>*【错题】<br>180、某预测型组织最近决定转向敏捷交付方法，正在进行的项目仍将由项目经理领导。由于项目A预算意外超支，高层管理人员对敏捷项目团队是否已做好对项目预算进行自我管理的准备缺乏信心。项目A的项目经理应该采取哪两种措施？(选择两项)<br>A.邀请高层管理人员参加站会，向其提供开支方面的状态报告。<br>==B.与高层管理人员就开支问题确定上报层级==。<br>C.让敏捷教练向高层管理人员提供项目开支周报。<br>D.邀请高层管理人员参加每个冲刺的回顾会议，以便对开支作出评估。<br>==E.在敏捷教练的帮助下创建信息发射源，使开支可视化==。  </p>
-<p>正确答案：B,E，你的答案：C,E回答错误<br>解析：考查问题升级原则的制定及信息分享的途径。  </p>
-]]></content>
-      <tags>
-        <tag>PMP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PMP模拟题2</title>
-    <url>/posts/947eb1c0/</url>
-    <content><![CDATA[<hr>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">GNWING's BLOG</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录学习过程</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>guestbook</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="GN--WING"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">GN--WING</p>
+  <div class="site-description" itemprop="description">给自己的学习留下痕迹</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/GNWING" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;GNWING" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:gn-wing.foxmail.com" title="E-Mail → mailto:gn-wing.foxmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/GNWING" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://gnwing.github.io/posts/947eb1c0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="GN--WING">
+      <meta itemprop="description" content="给自己的学习留下痕迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GNWING's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          PMP模拟题2
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-06-01 13:28:24 / Modified: 13:31:07" itemprop="dateCreated datePublished" datetime="2023-06-01T13:28:24+08:00">2023-06-01</time>
+    </span>
+
+  
+    <span id="/posts/947eb1c0/" class="post-meta-item leancloud_visitors" data-flag-title="PMP模拟题2" title="Views">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine: </span>
+  
+    <a title="valine" href="/posts/947eb1c0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/posts/947eb1c0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>45k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>40 mins.</span>
+    </span>
+</div>
+
+            <div class="post-description">PMP模拟题（2）</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <hr>
 <p>title: ✅承制——模拟题二（新）<br>updated: 2023-04-29 04:41:31Z<br>created: 2023-04-16 06:09:52Z<br>latitude: 23.12911000<br>longitude: 113.26438500<br>altitude: 0.0000</p>
 <hr>
 <p>*【错题】<br>1、项目经理正在管理一个先进的计费系统项目。项目经理已经检查了现在的计费系统以及公司项目管理信息系统中的==经验教训知识库==。项目经理将可能收集更多的系统需求。项目经理下一步应该怎么做？<br>A.参考所有的行业最佳实践。<br>==B.咨询任何有经验的内部或外部团队。==<br>C.与外部主题专家一起工作。<br>D.与内部业务和技术支持资源一起工作。  </p>
@@ -848,9 +849,149 @@
 <hr>
 <p><br></br><br>*【错题】<br>180、项目发起人要求对某个可交付成果进行修改，该请求已经经过变更控制委员会的评审和批准。项目经理接下来的任务是什么？(选三项)<br>==A.更新项目管理计划==。<br>==B.更新范围基准。==<br>==C.在变更日志中更新变更请求的状态。==<br>D.收集团队成员的意见，并准备一次风险评估。<br>E.评审变更管理流程。<br>F.评估变更对项目目标的影响。  </p>
 <p>正确答案：A,B,C，你的答案：B,C,E回答错误<br>解析：考查变更管理相关知识点。  </p>
-]]></content>
-      <tags>
-        <tag>PMP</tag>
-      </tags>
-  </entry>
-</search>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>GN--WING
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://gnwing.github.io/posts/947eb1c0/" title="PMP模拟题2">https://gnwing.github.io/posts/947eb1c0/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/PMP/" rel="tag"># PMP</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/d07ff3e9/" rel="prev" title="模拟题3">
+                  <i class="fa fa-chevron-left"></i> 模拟题3
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="valine-comments"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GN--WING</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>Symbols count total: </span>
+    <span title="Symbols count total">70k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>Reading time total &asymp;</span>
+    <span title="Reading time total">1:04</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":null,"app_key":null,"server_url":null,"security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+
+
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"30XSsnU8dn2VAjg9jtlmlRs2-MdYXbMMI","appKey":"YMawXNrBiX8q5PKcTIY9dnU0","serverURLs":"https://30XSsnU8.api.lncldglobal.com/","placeholder":"输入你的评论\n昵称为必填项目，输入QQ号可以直接获取用户名和头像，并且省去了填写邮箱的麻烦！\n虽然email不是必选，但是填写了email可以收到推送通知哦！","avatar":"","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":true,"requiredFields":["nick"],"el":"#valine-comments","path":"/posts/947eb1c0/"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.valine.el)
+    .then(() => NexT.utils.getScript(
+      'https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+      { condition: window.Valine }
+    ))
+    .then(() => {
+      new Valine(CONFIG.valine);
+    });
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
